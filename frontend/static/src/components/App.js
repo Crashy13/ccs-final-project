@@ -1,25 +1,26 @@
-import logo from '../logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    componentDidMount() {
+      fetch('https://api.rawg.io/api/games')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => console.log({ data })).catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+    }
+  render() {
+    return (
+        <>
+        </>
+    );
+  }
 }
 
 export default App;
