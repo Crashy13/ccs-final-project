@@ -15,14 +15,6 @@ nav {
   color: white;
 }
 
-.navlinks {
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
-}
-
 .nav-link {
   color: white;
 }

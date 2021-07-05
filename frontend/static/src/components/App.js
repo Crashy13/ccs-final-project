@@ -5,7 +5,7 @@ import Registration from './Registration'
 import UserHomepage from './UserHomepage'
 import Navbar from './Navbar'
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -42,7 +42,7 @@ async handleRegistration(user) {
   if(response.ok) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
-    this.setState({selection:'user_homepage'})
+    this.setState({selection:'userhomepage'})
   }
 }
 
@@ -62,7 +62,7 @@ async handleLogin(user) {
   if(response.ok) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
-    this.setState({selection:'user_homepage'})
+    this.setState({selection:'userhomepage'})
   }
 }
 
@@ -80,7 +80,7 @@ async handleLogout() {
 
   if(response.ok) {
     Cookies.remove('Authorization');
-    this.setState({selection:'user_homepage'})
+    this.setState({selection:'userhomepage'})
   }
 }
 
@@ -90,13 +90,13 @@ async handleLogout() {
       <Router>
         <div className="main_container">
           <>
-            <Navbar handleNavigation={this.handleNavigation} isAuth={this.state.selection === 'user_homepage'} handleLogout={this.handleLogout} />
+            <Navbar handleNavigation={this.handleNavigation} isAuth={this.state.selection === 'userhomepage'} handleLogout={this.handleLogout} />
               <div>
                 <Switch>
                   <Route exact path="/">
                     <Login handleNavigation={this.handleNavigation} handleLogin={this.handleLogin} />
                   </Route>
-                  <Route path="/registration">
+                  <Route path="/register">
                     <Registration handleNavigation={this.handleNavigation} handleRegistration={this.handleRegistration}/>
                   </Route>
                   <Route path="/userhomepage">
