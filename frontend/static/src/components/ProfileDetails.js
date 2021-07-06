@@ -29,7 +29,7 @@ class ProfileDetails extends React.Component {
   render() {
     return(
       <>
-        <img src={this.state.data?.preview} alt="Profile photo"/>
+        <img src={this.state.data?.avatar} alt="Profile photo"/>
         <p>{this.state.data?.display_name}</p>
       </>
     )
