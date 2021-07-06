@@ -9,6 +9,8 @@ function Navbar(props) {
         <li>{!Cookies.get('Authorization') && <Link to="/" className="nav-link">Login</Link>}</li>
         <li>{!Cookies.get('Authorization') && <Link to="/register" className="nav-link">Register</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">Home Page</Link>}</li>
+        <li>{!!Cookies.get('Authorization') && <Link to="/profile" className="nav-link">Profile</Link>}</li>
+        <li>{!!Cookies.get('Authorization') && <Link to="/reviews" className="nav-link">Reviews</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/" className="nav-link" onClick={() => props.handleLogout('login')}>Logout</Link>}</li>
       </ul>
     </nav>

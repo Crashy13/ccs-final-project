@@ -7,6 +7,8 @@ import Navbar from './Navbar'
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import PrivateRoute from './PrivateRouter'
+import Profile from './Profile'
+import Reviews from './Reviews'
 
 
 class App extends React.Component {
@@ -102,6 +104,12 @@ async handleLogout() {
                   </Route>
                   <PrivateRoute path="/userhomepage">
                     <UserHomepage/>
+                  </PrivateRoute>
+                  <PrivateRoute path="/profile">
+                    <Profile/>
+                  </PrivateRoute>
+                  <PrivateRoute path="/reviews">
+                    <Reviews/>
                   </PrivateRoute>
                 </Switch>
               </div>

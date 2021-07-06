@@ -2,13 +2,17 @@
   text-align: center;
 }
 
+img {
+  width: 200px;
+  height: 300px;
+}
+
 ul {
   list-style-type: none;
 }
 
 nav {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   min-height: 10vh;
   background: rgb(73, 79, 82);
