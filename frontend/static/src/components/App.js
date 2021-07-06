@@ -6,6 +6,7 @@ import UserHomepage from './UserHomepage'
 import Navbar from './Navbar'
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+import PrivateRoute from './PrivateRouter'
 
 
 class App extends React.Component {
@@ -99,9 +100,9 @@ async handleLogout() {
                   <Route path="/register">
                     <Registration handleNavigation={this.handleNavigation} handleRegistration={this.handleRegistration}/>
                   </Route>
-                  <Route path="/userhomepage">
+                  <PrivateRoute path="/userhomepage">
                     <UserHomepage/>
-                  </Route>
+                  </PrivateRoute>
                 </Switch>
               </div>
           </>
