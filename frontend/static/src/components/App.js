@@ -1,14 +1,14 @@
 import React from 'react';
-import Cookies from 'js-cookie'
-import Login from './Login'
-import Registration from './Registration'
-import UserHomepage from './UserHomepage'
-import Navbar from './Navbar'
+import Cookies from 'js-cookie';
+import Login from './Login';
+import Registration from './Registration';
+import UserHomepage from './UserHomepage';
+import Navbar from './Navbar';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
-import PrivateRoute from './PrivateRouter'
-import Profile from './Profile'
-import Reviews from './Reviews'
+import {Route, Switch} from 'react-router-dom';
+import PrivateRoute from './PrivateRouter';
+import Profile from './Profile';
+import Reviews from './Reviews';
 
 
 class App extends React.Component {
@@ -90,7 +90,6 @@ async handleLogout() {
 
   render() {
     return (
-      <Router>
         <div className="main_container">
           <>
             <Navbar handleNavigation={this.handleNavigation} isAuth={this.state.selection === 'userhomepage'} handleLogout={this.handleLogout} />
@@ -115,7 +114,6 @@ async handleLogout() {
               </div>
           </>
         </div>
-      </Router>
     );
   }
 }
