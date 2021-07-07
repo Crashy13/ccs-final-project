@@ -45,7 +45,6 @@ async handleRegistration(user) {
   if(response.ok) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
-    this.setState({selection:'userhomepage'})
     this.props.history.push('/userhomepage')
   }
 }
@@ -66,7 +65,6 @@ async handleLogin(user) {
   if(response.ok) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
-    this.setState({selection:'userhomepage'})
     this.props.history.push('/userhomepage')
   }
 }
@@ -85,17 +83,15 @@ async handleLogout() {
 
   if(response.ok) {
     Cookies.remove('Authorization');
-    this.setState({selection:'userhomepage'})
   }
 }
 
 
   render() {
-    const {history} = this.props
     return (
         <div className="main_container">
           <>
-            <Navbar handleNavigation={this.handleNavigation} isAuth={this.state.selection === 'userhomepage'} handleLogout={this.handleLogout} />
+            <Navbar handleNavigation={this.handleNavigation} handleLogout={this.handleLogout} />
               <div>
                 <Switch>
                   <Route exact path="/">
