@@ -8,8 +8,8 @@ import './App.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
 import Profile from './Profile';
-import Reviews from './Reviews';
-
+import Search from './Search'
+import GameDetail from './GameDetail'
 
 class App extends React.Component {
   constructor(props) {
@@ -100,15 +100,10 @@ async handleLogout() {
                   <Route path="/register">
                     <Registration handleNavigation={this.handleNavigation} handleRegistration={this.handleRegistration}/>
                   </Route>
-                  <PrivateRoute path="/userhomepage">
-                    <UserHomepage/>
-                  </PrivateRoute>
-                  <PrivateRoute path="/profile">
-                    <Profile/>
-                  </PrivateRoute>
-                  <PrivateRoute path="/reviews">
-                    <Reviews/>
-                  </PrivateRoute>
+                  <PrivateRoute path="/userhomepage" component={UserHomepage}/>
+                  <PrivateRoute path="/profile" component={Profile}/>
+                  <PrivateRoute path="/search" component={Search}/>
+                  <PrivateRoute path='/game/:name' component={GameDetail}/>
                 </Switch>
               </div>
           </>

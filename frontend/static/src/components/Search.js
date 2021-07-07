@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import Results from './Results'
 require('dotenv').config()
 
@@ -16,10 +16,10 @@ const Search = () => {
     let slug = searchTerm.split(' ').join('-').toLowerCase()
 
     setGameResults([])
-    fetch(`https://rawg.io/api/games/${slug}?key=${process.env.REACT_APP_API_KEY}`)
+    fetch(`https://rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}&search=${slug}`)
       .then(response => response.json())
-      .then(({data}) => {
-        setGameResults(data)
+      .then(({results}) => {
+        results === undefined ? alert('no games found') : setGameResults(results)
       })
       setSearchTerm('')
   }

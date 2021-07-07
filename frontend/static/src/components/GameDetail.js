@@ -5,22 +5,13 @@ const GameDetail = (props) => {
   return(
     <div>
       <h1>{game.name}</h1>
+      <img src={game.background_image} alt="screenshot"/>
       <p>Released: {game.released}</p>
-      <p>Rating: {game.rating}</p>
-      <h3>Genre(s):</h3>
-      {
-        game.genres.map(g => `${g.name} | `)
-      }
+      <p>Playtime: ~ {game.playtime} hours</p>
       <h3>Platform(s):</h3>
       {
         game.platforms.map(p => `${p.platform.name} |`)
       }
-
-      <ul>
-        {
-          game.short_screenshots.map(ss => <li><img src={ss.image} alt="screenshot"/></li>)
-        }
-      </ul>
     </div>
   )
 }

@@ -28,8 +28,8 @@ class ProfileDetails extends React.Component {
   render() {
     return(
       <>
-        <img src={this.state.data?.avatar} alt=""/>
-        <p>{this.state.data?.display_name}</p>
+        <img className="profile_picture" src={this.state.data?.avatar} alt=""/>
+        <h3>{this.state.data?.display_name}</h3>
       </>
     )
   }

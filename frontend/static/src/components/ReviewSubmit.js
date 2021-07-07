@@ -45,6 +45,7 @@ class ReviewSubmit extends React.Component {
       <>
         <div>
           <form onSubmit={this.addReview}>
+            <input type="text" name="title" value={this.state.game} onChange={this.handleInput} placeholder="Title of Game to Review"/>
             <input type="text" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
             <textarea name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
             <button type="submit">Submit</button>

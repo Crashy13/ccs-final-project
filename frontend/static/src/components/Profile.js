@@ -1,6 +1,7 @@
 import React from 'react'
 import Cookies from 'js-cookie'
 import ProfileDetails from './ProfileDetails'
+import Reviews from './Reviews';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -87,6 +88,9 @@ class Profile extends React.Component {
             <button type='submit'>Save profile?</button>
 
           </form>}
+
+            <h1>Personal Reviews</h1>
+            <Reviews />
 
       </div>
       </>

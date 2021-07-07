@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'friends.apps.FriendsConfig',
     'frontend.apps.FrontendConfig',
+    'games.apps.GamesConfig',
     'reviews.apps.ReviewsConfig',
 ]
 
