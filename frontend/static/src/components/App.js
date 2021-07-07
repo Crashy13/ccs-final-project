@@ -5,7 +5,7 @@ import Registration from './Registration';
 import UserHomepage from './UserHomepage';
 import Navbar from './Navbar';
 import './App.css';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
 import Profile from './Profile';
 import Reviews from './Reviews';
@@ -46,6 +46,7 @@ async handleRegistration(user) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
     this.setState({selection:'userhomepage'})
+    this.props.history.push('/userhomepage')
   }
 }
 
@@ -66,6 +67,7 @@ async handleLogin(user) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
     this.setState({selection:'userhomepage'})
+    this.props.history.push('/userhomepage')
   }
 }
 
@@ -89,6 +91,7 @@ async handleLogout() {
 
 
   render() {
+    const {history} = this.props
     return (
         <div className="main_container">
           <>
@@ -118,4 +121,4 @@ async handleLogout() {
   }
 }
 
-export default App;
+export default withRouter(App);
