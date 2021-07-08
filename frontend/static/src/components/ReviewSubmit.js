@@ -41,6 +41,7 @@ class ReviewSubmit extends React.Component {
         return response.json();
       })
       this.setState({game: '', title: '', author: '', body: ''})
+      this.props.history.push('/profile')
   }
   render() {
     return(
@@ -50,6 +51,16 @@ class ReviewSubmit extends React.Component {
             <input className="review_input" type="text" autoComplete="off" name="game" value={this.state.game} onChange={this.handleInput} placeholder="Title of Game to Review"/>
             <input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
             <textarea className="review_input" name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
+            <input type="text" autoComplete="off" placeholder="Rating 1-5"/>
+            <br/>
+            <section className="rating_scale">
+              <p>Rating Scale:</p>
+              <p>5- Awesome. Highly recommend.</p>
+              <p>4- Fun. Recommend but not a go and get now.</p>
+              <p>3- It was ok. Good but ok if you miss it.</p>
+              <p>2- Can't recommend. Didn't really enjoy it. Not for me, but could see others maybe liking it.</p>
+              <p>1- Garbage. Not even worth a try.</p>
+            </section>
             <button type="submit">Submit</button>
           </form>
         </div>

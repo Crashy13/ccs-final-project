@@ -2,6 +2,7 @@ import React from 'react'
 import Cookies from 'js-cookie'
 import ReviewDetails from './ReviewDetails'
 import ReviewSubmit from './ReviewSubmit'
+import {Link} from 'react-router-dom'
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class Reviews extends React.Component {
     return(
       <>
         <ul>
-        <ReviewSubmit addReview={this.addReview} />
+        <Link to="/submitreview">Add New Review</Link>
         <section className="rating_scale">
           <p>Rating Scale:</p>
           <p>5- Awesome. Highly recommend.</p>
@@ -78,7 +79,7 @@ class Reviews extends React.Component {
           <p>3- It was ok. Good but ok if you miss it.</p>
           <p>2- Can't recommend. Didn't really enjoy it. Not for me, but could see others maybe liking it.</p>
           <p>1- Garbage. Not even worth a try.</p>
-          </section>
+        </section>
         <p>{reviews}</p>
         </ul>
       </>

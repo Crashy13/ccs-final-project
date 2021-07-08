@@ -3,13 +3,11 @@ import {Route, Redirect} from 'react-router-dom'
 
 function PrivateRoute ({children, ...rest}) {
   return(
-    <Route {...rest}
-    render={() => {
+    <Route {...rest} render={() => {
       return !!Cookies.get('Authorization') === true
       ? children
       : <Redirect to='/' />
-    }
-  } />
+    }} />
   )
 }
 

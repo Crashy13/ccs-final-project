@@ -5,11 +5,13 @@ import Registration from './Registration';
 import UserHomepage from './UserHomepage';
 import Navbar from './Navbar';
 import './App.css';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
 import Profile from './Profile';
 import Search from './Search'
 import GameDetail from './GameDetail'
+import Wishlist from './Wishlist'
+import ReviewSubmit from './ReviewSubmit'
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +47,7 @@ async handleRegistration(user) {
   if(response.ok) {
     const data = await response.json().catch(handleError);
     Cookies.set('Authorization', `Token ${data.key}`)
-    this.props.history.push('/userhomepage')
+    this.props.history.push('/profile')
   }
 }
 
@@ -104,6 +106,8 @@ async handleLogout() {
                   <PrivateRoute path="/profile" component={Profile}/>
                   <PrivateRoute path="/search" component={Search}/>
                   <PrivateRoute path='/game/:name' component={GameDetail}/>
+                  <PrivateRoute path='/wishlist' component={Wishlist}/>
+                  <PrivateRoute path='/submitreview' component={ReviewSubmit}/>
                 </Switch>
               </div>
           </>

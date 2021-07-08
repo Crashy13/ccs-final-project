@@ -11,6 +11,7 @@ function Navbar(props) {
         <li>{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">Home Page</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/profile" className="nav-link">Profile</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/search" className="nav-link">Search</Link>}</li>
+        <li>{!!Cookies.get('Authorization') && <Link to="/wishlist" className="nav-link">Wishlist</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/" className="nav-link" onClick={() => props.handleLogout('login')}>Logout</Link>}</li>
       </ul>
     </nav>
