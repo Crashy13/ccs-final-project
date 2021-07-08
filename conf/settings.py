@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     'games.apps.GamesConfig',
     'reviews.apps.ReviewsConfig',
+    'wishlists.apps.WishlistsConfig',
+
 ]
 
 REST_FRAMEWORK = {

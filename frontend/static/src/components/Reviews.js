@@ -69,9 +69,17 @@ class Reviews extends React.Component {
     ))
     return(
       <>
-        <p>{reviews}</p>
         <ul>
         <ReviewSubmit addReview={this.addReview} />
+        <section className="rating_scale">
+          <p>Rating Scale:</p>
+          <p>5- Awesome. Highly recommend.</p>
+          <p>4- Fun. Recommend but not a go and get now.</p>
+          <p>3- It was ok. Good but ok if you miss it.</p>
+          <p>2- Can't recommend. Didn't really enjoy it. Not for me, but could see others maybe liking it.</p>
+          <p>1- Garbage. Not even worth a try.</p>
+          </section>
+        <p>{reviews}</p>
         </ul>
       </>
     )

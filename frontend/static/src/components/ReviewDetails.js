@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 class ReviewDetails extends React.Component {
   constructor(props) {
@@ -30,11 +32,16 @@ class ReviewDetails extends React.Component {
       <>
       <div>
         <li>
+          <h2>{review.game}</h2>
           <h3>{review.title}</h3>
+          <Moment format="MM/DD/YYYY hh:mm">{review.created_at}</Moment>
           {this.state.isEditing
             ? <textarea cols="30" row="10" name="body" value={this.state.body} onChange={this.handleInput} />
             : <p>{review.body}</p>
           }
+          <h4>My Rating: {review.rating}</h4>
+
+
           {this.state.isEditing
             ? <button type="button" onClick={this.saveReview}>Save</button>
             : review.is_owner && <button type="button" onClick={() => this.setState({isEditing: true})}>Edit</button>

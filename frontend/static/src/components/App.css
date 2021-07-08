@@ -22,3 +22,18 @@ nav {
 .nav-link {
   color: white;
 }
+
+.review_container {
+  width: 25%;
+  height: 100%;
+  display: flex;
+}
+
+.review_container > * {
+  align-self: center;
+  padding: 2% 15%;
+}
+
+.review_input {
+  margin-bottom: 2px;
+}
