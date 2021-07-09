@@ -8,7 +8,7 @@ function Navbar(props) {
       <ul className="nav-links">
         <li>{!Cookies.get('Authorization') && <Link to="/" className="nav-link">Login</Link>}</li>
         <li>{!Cookies.get('Authorization') && <Link to="/register" className="nav-link">Register</Link>}</li>
-        <li>{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">Home Page</Link>}</li>
+        <li>{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">My Collection</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/profile" className="nav-link">Profile</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/search" className="nav-link">Search</Link>}</li>
         <li>{!!Cookies.get('Authorization') && <Link to="/wishlist" className="nav-link">Wishlist</Link>}</li>

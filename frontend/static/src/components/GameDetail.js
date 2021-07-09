@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
 
 const GameDetail = (props) => {
 
@@ -9,8 +10,8 @@ const GameDetail = (props) => {
   // const {name, developer} = person;
 
 
-  const addGame = (e) => {
-    e.preventDefault()
+  const addGame = (is_owned) => {
+    // e.preventDefault()
     const options = {
       method: 'POST',
       headers: {
@@ -20,6 +21,8 @@ const GameDetail = (props) => {
       body: JSON.stringify({
         name: game.name,
         released: game.released,
+        background_image: game.background_image,
+        is_owned,
       })
     }
   fetch('/api/v1/games/', options)
@@ -29,6 +32,7 @@ const GameDetail = (props) => {
       }
       return response.json();
     })
+    props.history.push('/userhomepage')
 }
 
   return(
@@ -41,9 +45,10 @@ const GameDetail = (props) => {
         game.platforms.map(p => `${p.platform.name} |`)
       }
       <br/>
-      <button type="button" onClick={addGame}>Add to Your Collection</button>
+      <button type="button" onClick={() => addGame(true)}>Add to Your Collection</button>
+      <button type="button" onClick={() => addGame(false)}>Add to Wishlist</button>
     </div>
   )
 }
 
-export default GameDetail;
+export default withRouter(GameDetail);

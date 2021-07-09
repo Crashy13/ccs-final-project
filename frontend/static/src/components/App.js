@@ -5,7 +5,7 @@ import Registration from './Registration';
 import UserHomepage from './UserHomepage';
 import Navbar from './Navbar';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
 import Profile from './Profile';
 import Search from './Search'
