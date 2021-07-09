@@ -9,6 +9,7 @@ class Wishlist extends React.Component {
       games: [],
     }
     this.removeGame = this.removeGame.bind(this)
+    this.updateOwned = this.updateOwned.bind(this)
   }
 
   componentDidMount() {
@@ -41,9 +42,28 @@ class Wishlist extends React.Component {
       })
   }
 
+  updateOwned(game) {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(game)
+    }
+    fetch(`/api/v1/games/${game.id}`, options)
+      .then(response => response.json())
+      .then(data => {
+        const games = [...this.state.games]
+        const index = games.findIndex(game => game.id === game.id)
+        games[index] = data;
+        this.setState({games})
+      })
+  }
+
   render() {
     const games = this.state.games.map(game => (
-      <CollectionDetails key={game.id} game={game} removeGame={this.removeGame} />
+      <CollectionDetails key={game.id} game={game} removeGame={this.removeGame} updateOwned={this.updateOwned} />
     ))
     return(
     <>
