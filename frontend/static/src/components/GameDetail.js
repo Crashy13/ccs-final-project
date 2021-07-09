@@ -4,6 +4,10 @@ const GameDetail = (props) => {
 
   const {game} = props.location.gameProps
 
+  // const person = {name: 'Scotty', developer: true, baker: true};
+  //
+  // const {name, developer} = person;
+
 
   const addGame = (e) => {
     e.preventDefault()
@@ -13,7 +17,10 @@ const GameDetail = (props) => {
         'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
-      body: JSON.stringify()
+      body: JSON.stringify({
+        name: game.name,
+        released: game.released,
+      })
     }
   fetch('/api/v1/games/', options)
     .then(response => {
@@ -26,10 +33,9 @@ const GameDetail = (props) => {
 
   return(
     <div>
-      <h1>{game.id.name}</h1>
+      <h1>{game.name}</h1>
       <img src={game.background_image} alt="screenshot"/>
-      <p>Released: {game.released}</p>
-      <p>Playtime: ~ {game.playtime} hours</p>
+      <h3>Released: {game.released}</h3>
       <h3>Platform(s):</h3>
       {
         game.platforms.map(p => `${p.platform.name} |`)

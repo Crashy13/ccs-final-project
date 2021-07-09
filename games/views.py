@@ -5,8 +5,11 @@ from .serializers import GameSerializer
 
 
 class GameListAPIView(generics.ListCreateAPIView):
-    queryset = Game.objects.all()
     serializer_class = GameSerializer
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Game.objects.filter(owner=user)
