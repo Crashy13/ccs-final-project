@@ -12,6 +12,7 @@ import Search from './Search'
 import GameDetail from './GameDetail'
 import Wishlist from './Wishlist'
 import ReviewSubmit from './ReviewSubmit'
+import LandingPage from './LandingPage'
 
 class App extends React.Component {
   constructor(props) {
@@ -96,7 +97,8 @@ async handleLogout() {
             <Navbar handleNavigation={this.handleNavigation} handleLogout={this.handleLogout} />
               <div>
                 <Switch>
-                  <Route exact path="/">
+                  <Route exact path="/" component={LandingPage} />
+                  <Route exact path="/login">
                     <Login handleNavigation={this.handleNavigation} handleLogin={this.handleLogin} />
                   </Route>
                   <Route path="/register">

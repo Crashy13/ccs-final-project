@@ -37,3 +37,19 @@ nav {
 .review_input {
   margin-bottom: 2px;
 }
+
+.frontpage-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 100px auto;
+  border: 1px solid black;
+  height: 400px;
+  width: 800px;
+}
+
+.frontpage-item {
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+}
