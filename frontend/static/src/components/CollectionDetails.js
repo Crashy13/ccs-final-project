@@ -30,6 +30,7 @@ class CollectionDetails extends React.Component {
     return(
       <>
       <li>
+        <div className="collection-item">
         <h2>{game.name}</h2>
         <img src={game.background_image} alt="game screenshot"/>
         <br/>
@@ -43,6 +44,7 @@ class CollectionDetails extends React.Component {
           : <button type="button" onClick={() => this.setState({isEditing: true})}>Change Play Status</button>}
 
         <button type="button" onClick={() => this.props.removeGame(game.id)}>Remove</button>
+        </div>
       </li>
       </>
     )

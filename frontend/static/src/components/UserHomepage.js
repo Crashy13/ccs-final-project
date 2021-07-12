@@ -13,7 +13,7 @@ class UserHomepage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/games/`)
+    fetch(`/api/v1/games/?is_owned=true`)
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');
@@ -68,7 +68,9 @@ class UserHomepage extends React.Component {
     return(
     <>
       <h1>MY COLLECTION</h1>
-      <ul>{games}</ul>
+      <div className="collection-container">
+          <ul>{games}</ul>
+      </div>
     </>
     )
   }

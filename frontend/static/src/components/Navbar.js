@@ -6,6 +6,7 @@ function Navbar(props) {
   return(
     <nav>
       <ul className="nav-links">
+        <li className="navbar-links"><Link to="/" className="nav-link">Home</Link></li>
         <li className="navbar-links">{!Cookies.get('Authorization') && <Link to="/login" className="nav-link">Login</Link>}</li>
         <li className="navbar-links">{!Cookies.get('Authorization') && <Link to="/register" className="nav-link">Register</Link>}</li>
         <li className="navbar-links">{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">My Collection</Link>}</li>

@@ -6,11 +6,22 @@ from .permissions import IsAuthOrReadOnly
 
 
 class WishlistListAPIView(generics.ListCreateAPIView):
-    queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Wishlist.objects.filter(owner=user, is_owned=False)
 
 
 class WishlistDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
-    
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Wishlist.objects.filter(owner=user)

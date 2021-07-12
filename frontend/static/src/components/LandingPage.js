@@ -16,7 +16,7 @@ class LandingPage extends React.Component {
         </div>
         <div className="frontpage-item">
         <p className="frontpage-title">Your Community</p>
-        <p className="frontpage-body">Connect with friends to share see what they're playing</p>
+        <p className="frontpage-body">Connect with friends to share and see what they're playing</p>
         </div>
       </div>
       </div>

@@ -40,9 +40,9 @@ const GameDetail = (props) => {
       <img src={game.background_image} alt="screenshot"/>
       <h3>Released: {game.released}</h3>
       <h3>Platform(s):</h3>
-      {
+      <p>{
         game.platforms.map(p => `${p.platform.name} |`)
-      }
+      }</p>
       <br/>
       <button type="button" onClick={() => addGame(true)}>Add to Your Collection</button>
       <button type="button" onClick={() => addGame(false)}>Add to Wishlist</button>

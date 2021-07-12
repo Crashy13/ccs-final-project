@@ -13,7 +13,7 @@ class Wishlist extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/games/`)
+    fetch(`/api/v1/games/?is_owned=false`)
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');
@@ -44,20 +44,20 @@ class Wishlist extends React.Component {
 
   updateOwned(game) {
     const options = {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
       body: JSON.stringify(game)
     }
-    fetch(`/api/v1/games/${game.id}`, options)
+    fetch(`/api/v1/wishlists/${game.id}`, options)
       .then(response => response.json())
       .then(data => {
         const games = [...this.state.games]
         const index = games.findIndex(game => game.id === game.id)
         games[index] = data;
-        this.setState({games})
+        this.setState({game})
       })
   }
 

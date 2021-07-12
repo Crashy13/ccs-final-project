@@ -12,8 +12,8 @@ html {
 }
 
 img {
-  width: 25%;
-  height: 25%
+  width: 13rem;
+  height: 10rem;
 }
 
 div {
@@ -24,18 +24,32 @@ ul {
   list-style-type: none;
 }
 
+h1 {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
 p {
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    color: white;
 }
 
 nav {
   display: flex;
   align-items: center;
   min-height: 10vh;
+  width: 100%;
   background: #387E54;
   color: white;
   text-transform: uppercase;
@@ -43,15 +57,16 @@ nav {
 
  nav > * {
    display: flex;
-   margin: auto;
+   width: 40%;
+   margin: 0;
  }
 
  .navbar-links {
-   margin: 10%;
+   margin: 5% 10%;
  }
 
 body {
-  background: black;
+  background: #292C33;
 }
 
 .nav-link {
@@ -81,7 +96,7 @@ body {
 }
 
 .frontpage-item {
-  background: #292C33;
+  background: #676767;
   margin: 1%;
   flex: 1;
 }
@@ -99,8 +114,12 @@ body {
 
 .frontpage-body {
   font-size: 1.25rem;
-  color: grey;
+  color: #ECE6DC;
   text-align: center;
   line-height: 1.5;
   margin: 0;
+}
+
+.profile_picture {
+  border-radius: 50%;
 }
