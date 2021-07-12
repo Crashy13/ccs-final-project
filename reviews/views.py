@@ -5,6 +5,7 @@ from .permissions import IsAuthOrReadOnly
 
 class ReviewListAPIView(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
+    permission_class = (IsAuthOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

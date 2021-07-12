@@ -33,7 +33,7 @@ class UserHomepage extends React.Component {
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
     }
-    fetch(`/api/v1/games/${id}`, options)
+    fetch(`/api/v1/games/${id}/`, options)
       .then(response => {
         const games = [...this.state.games]
         const index = games.findIndex(game => game.id === id)
@@ -51,7 +51,7 @@ class UserHomepage extends React.Component {
       },
       body: JSON.stringify(game)
     }
-    fetch(`/api/v1/games/${game.id}`, options)
+    fetch(`/api/v1/games/${game.id}/?is_owned=true`, options)
       .then(response => response.json())
       .then(data => {
         const games = [...this.state.games]

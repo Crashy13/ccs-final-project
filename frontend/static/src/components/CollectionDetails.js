@@ -1,4 +1,5 @@
 import React from 'react'
+import Dropdown from './Dropdown'
 
 
 class CollectionDetails extends React.Component {
@@ -6,16 +7,21 @@ class CollectionDetails extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      play_status: this.props.game.play_status,
+      play_status: 'UNSTARTED',
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.saveStatus = this.saveStatus.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
   handleChange(e) {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({play_status: e.target.value})
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
   }
 
   saveStatus() {
@@ -35,8 +41,12 @@ class CollectionDetails extends React.Component {
         <img src={game.background_image} alt="game screenshot"/>
         <br/>
         {this.state.isEditing
-          ? <form onChange={this.handleChange}>
-             <input type="text" name="play_status" value={this.state.play_status} autoComplete="off"/>
+          ? <form onSubmit={this.handleSubmit}>
+              <select value={this.state.play_status} onChange={this.handleChange}>
+               <option value="UNSTARTED">Not Started</option>
+               <option value="PLAYING">Playing</option>
+               <option value="COMPLETED">Completed</option>
+              </select>
             </form>
           : <p>Play Status: {game.play_status}</p>}
         {this.state.isEditing

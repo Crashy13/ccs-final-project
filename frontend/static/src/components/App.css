@@ -73,6 +73,10 @@ body {
   color: white;
 }
 
+.create-review-link {
+  color: pink;
+}
+
 .review_container {
   width: 25%;
   height: 100%;

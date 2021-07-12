@@ -86,6 +86,7 @@ async handleLogout() {
 
   if(response.ok) {
     Cookies.remove('Authorization');
+    this.props.history.push('/')
   }
 }
 

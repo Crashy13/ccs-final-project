@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import CollectionDetails from './WishlistDetails'
 
@@ -42,22 +43,25 @@ class Wishlist extends React.Component {
       })
   }
 
-  updateOwned(game) {
+  updateOwned(id) {
     const options = {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
-      body: JSON.stringify(game)
+      body: JSON.stringify({
+        is_owned: true
+      }),
     }
-    fetch(`/api/v1/wishlists/${game.id}`, options)
+    fetch(`/api/v1/games/${id}/?is_owned=false`, options)
       .then(response => response.json())
       .then(data => {
         const games = [...this.state.games]
         const index = games.findIndex(game => game.id === game.id)
         games[index] = data;
-        this.setState({game})
+        this.setState({games})
+        this.props.history.push('/userhomepage')
       })
   }
 
@@ -67,11 +71,11 @@ class Wishlist extends React.Component {
     ))
     return(
     <>
-      <h1>YOUR WISHLIST</h1>
+      <h1>MY WISHLIST</h1>
       <ul>{games}</ul>
     </>
     )
   }
 }
 
-export default Wishlist
+export default withRouter(Wishlist)
