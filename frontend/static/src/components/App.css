@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  font-family: Open Sans, sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -7,16 +16,42 @@ img {
   height: 25%
 }
 
+div {
+  display: block;
+}
+
 ul {
   list-style-type: none;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 nav {
   display: flex;
   align-items: center;
   min-height: 10vh;
-  background: rgb(73, 79, 82);
+  background: #387E54;
   color: white;
+  text-transform: uppercase;
+}
+
+ nav > * {
+   display: flex;
+   margin: auto;
+ }
+
+ .navbar-links {
+   margin: 10%;
+ }
+
+body {
+  background: black;
 }
 
 .nav-link {
@@ -40,16 +75,32 @@ nav {
 
 .frontpage-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 100px auto;
-  border: 1px solid black;
-  height: 400px;
-  width: 800px;
+  width: 75%;
+  margin: 20% auto;
+  padding: 1rem;
 }
 
 .frontpage-item {
-  display: flex;
-  justify-content: center;
-  border: 1px solid red;
+  background: #292C33;
+  margin: 1%;
+  flex: 1;
+}
+
+.frontpage-title {
+  font-size: 1.875rem;
+  text-transform: capitalize;
+  color: white;
+  text-align: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.frontpage-body {
+  font-size: 1.25rem;
+  color: grey;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
 }

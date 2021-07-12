@@ -11,7 +11,6 @@ const GameDetail = (props) => {
 
 
   const addGame = (is_owned) => {
-    // e.preventDefault()
     const options = {
       method: 'POST',
       headers: {
