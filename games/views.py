@@ -16,7 +16,7 @@ class GameListAPIView(generics.ListCreateAPIView):
         user = self.request.user
         is_owned = self.request.query_params.get('is_owned')
         play_status = self.request.query_params.get('play_status')
-        queryset = Game.objects.filter(owner=user).filter().order_by('name')
+        queryset = Game.objects.filter(owner=user).filter(is_owned=True).filter().order_by('name')
 
         # try:
         #     import pdb; pdb.set_trace()
@@ -31,11 +31,11 @@ class GameListAPIView(generics.ListCreateAPIView):
             return Game.objects.filter(is_owned=False).filter(owner=user).order_by('name')
         return queryset
 
-        if play_status is not None and play_status == UNSTARTED:
-            return Game.objects.filter(play_status=UNSTARTED).filter(owner=user).filter(is_owned=True).order_by('name')
+        if play_status is not None and play_status == "UNSTARTED":
+            return Game.objects.filter(play_status="UNSTARTED").filter(owner=user).filter(is_owned=True).order_by('name')
         elif play_status is not None and play_status == "PLAYING":
             return Game.objects.filter(play_status="PLAYING").filter(owner=user).filter(is_owned=True).order_by('name')
-        elif play_status is not None and play_statue == "COMPLETED":
+        elif play_status is not None and play_status == "COMPLETED":
             return Game.objects.filter(play_status="COMPLETED").filter(owner=user).filter(is_owned=True).order_by('name')
         return queryset
 

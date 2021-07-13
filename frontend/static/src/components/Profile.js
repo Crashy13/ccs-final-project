@@ -1,5 +1,6 @@
 import React from 'react'
 import Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
 import ProfileDetails from './ProfileDetails'
 import Reviews from './Reviews';
 
@@ -98,4 +99,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default withRouter(Profile)

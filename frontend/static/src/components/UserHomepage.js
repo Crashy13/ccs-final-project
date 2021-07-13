@@ -1,6 +1,7 @@
 import React from 'react'
 import Cookies from 'js-cookie'
 import CollectionDetails from './CollectionDetails'
+import {Link} from 'react-router-dom'
 
 class UserHomepage extends React.Component {
   constructor(props) {
@@ -69,6 +70,8 @@ class UserHomepage extends React.Component {
     return(
     <>
       <h1>MY COLLECTION</h1>
+      <Link className="create-review-link" to="/search">Add New Game To Collection</Link>
+      <br/>
       <button>Not Started</button>
       <button>Playing</button>
       <button>Completed</button>

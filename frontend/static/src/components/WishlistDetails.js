@@ -1,4 +1,5 @@
 import React from 'react'
+import Moment from 'react-moment'
 
 
 class WishlistDetails extends React.Component {
@@ -16,6 +17,7 @@ class WishlistDetails extends React.Component {
       <li>
         <h2>{game.name}</h2>
         <img src={game.background_image} alt="game screenshot"/>
+        <p>Date Added To Wishlist:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
         <br/>
         <button type="button" onClick={() => this.props.updateOwned(game.id)}>Add to Collection</button>
         <button type="button" onClick={() => this.props.removeGame(game.id)}>Remove</button>
