@@ -1,6 +1,5 @@
 import React from 'react'
-import Dropdown from './Dropdown'
-
+import {withRouter} from 'react-router-dom'
 
 class CollectionDetails extends React.Component {
   constructor(props) {
@@ -29,6 +28,7 @@ class CollectionDetails extends React.Component {
     game.play_status = this.state.play_status;
     this.props.updateStatus(game);
     this.setState({isEditing: false})
+    this.props.history.push('/userhomepage')
   }
 
   render() {
@@ -43,7 +43,7 @@ class CollectionDetails extends React.Component {
         {this.state.isEditing
           ? <form onSubmit={this.handleSubmit}>
               <select value={this.state.play_status} onChange={this.handleChange}>
-               <option value="UNSTARTED">Not Started</option>
+               <option value="NOTSTARTED">Not Started</option>
                <option value="PLAYING">Playing</option>
                <option value="COMPLETED">Completed</option>
               </select>
@@ -61,4 +61,4 @@ class CollectionDetails extends React.Component {
   }
 }
 
-export default CollectionDetails
+export default withRouter(CollectionDetails)
