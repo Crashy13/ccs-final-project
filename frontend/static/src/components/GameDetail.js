@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import Moment from 'react-moment';
 import {withRouter} from 'react-router-dom'
 
 const GameDetail = (props) => {
@@ -38,7 +39,7 @@ const GameDetail = (props) => {
     <div>
       <h1>{game.name}</h1>
       <img src={game.background_image} alt="screenshot"/>
-      <h3>Released: {game.released}</h3>
+      <h3>Released:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
       <h3>Platform(s):</h3>
       <p>{
         game.platforms.map(p => `${p.platform.name} |`)

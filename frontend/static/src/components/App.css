@@ -61,6 +61,10 @@ nav {
    margin: 0;
  }
 
+ .release-date {
+   color: white;
+ }
+
  .navbar-links {
    margin: 5% 10%;
  }

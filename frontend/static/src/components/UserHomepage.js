@@ -33,7 +33,7 @@ class UserHomepage extends React.Component {
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
     }
-    fetch(`/api/v1/games/${id}/?is_owner=true`, options)
+    fetch(`/api/v1/games/${id}/`, options)
       .then(response => {
         const games = [...this.state.games]
         const index = games.findIndex(game => game.id === id)
@@ -69,6 +69,9 @@ class UserHomepage extends React.Component {
     return(
     <>
       <h1>MY COLLECTION</h1>
+      <button>Not Started</button>
+      <button>Playing</button>
+      <button>Completed</button>
       <div className="collection-container">
           <ul>{games}</ul>
       </div>

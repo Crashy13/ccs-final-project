@@ -5,7 +5,7 @@ import Registration from './Registration';
 import UserHomepage from './UserHomepage';
 import Navbar from './Navbar';
 import './App.css';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
 import Profile from './Profile';
 import Search from './Search'
@@ -105,12 +105,24 @@ async handleLogout() {
                   <Route path="/register">
                     <Registration handleNavigation={this.handleNavigation} handleRegistration={this.handleRegistration}/>
                   </Route>
-                  <PrivateRoute path="/userhomepage" component={UserHomepage}/>
-                  <PrivateRoute path="/profile" component={Profile}/>
-                  <PrivateRoute path="/search" component={Search}/>
-                  <PrivateRoute path='/game/:name' component={GameDetail}/>
-                  <PrivateRoute path='/wishlist' component={Wishlist}/>
-                  <PrivateRoute path='/submitreview' component={ReviewSubmit}/>
+                  <PrivateRoute path="/userhomepage">
+                    <UserHomepage/>
+                  </PrivateRoute>
+                  <PrivateRoute path="/profile">
+                    <Profile/>
+                  </PrivateRoute>
+                  <PrivateRoute path="/search">
+                    <Search/>
+                  </PrivateRoute>
+                  <PrivateRoute path='/game/:name'>
+                    <GameDetail/>
+                  </PrivateRoute>
+                  <PrivateRoute path='/wishlist'>
+                    <Wishlist/>
+                  </PrivateRoute>
+                  <PrivateRoute path='/submitreview'>
+                    <ReviewSubmit/>
+                  </PrivateRoute>
                 </Switch>
               </div>
           </>
