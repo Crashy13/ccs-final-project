@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import {withRouter} from 'react-router-dom'
 import ProfileDetails from './ProfileDetails'
 import Reviews from './Reviews';
+import ProfileSearch from './ProfileSearch'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class Profile extends React.Component {
   render() {
     return(
       <>
+      <ProfileSearch />
       <div>
         {this.state.data
           ? (<ProfileDetails />)

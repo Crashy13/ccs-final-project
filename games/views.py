@@ -16,7 +16,7 @@ class GameListAPIView(generics.ListCreateAPIView):
         user = self.request.user
         is_owned = self.request.query_params.get('is_owned')
         play_status = self.request.query_params.get('play_status')
-        queryset = Game.objects.filter(owner=user).filter(is_owned=True).filter().order_by('name')
+        queryset = Game.objects.filter(owner=user).filter(is_owned=True).order_by('name')
 
         # try:
         #     import pdb; pdb.set_trace()
