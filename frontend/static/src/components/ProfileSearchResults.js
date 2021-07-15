@@ -1,16 +1,15 @@
 import React from 'react'
 
-class ProfileSearchDetails extends React.Component {
+class ProfileSearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      profiles: [],
       display_name: '',
       avatar: null,
       preview: '',
     }
-
   }
-
 
   render() {
     const profile = this.props.profile
@@ -26,4 +25,4 @@ class ProfileSearchDetails extends React.Component {
 }
 
 
-export default ProfileSearchDetails
+export default ProfileSearchResults

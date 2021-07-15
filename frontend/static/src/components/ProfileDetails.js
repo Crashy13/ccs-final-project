@@ -4,6 +4,7 @@ class ProfileDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      profiles: [],
       display_name: '',
       avatar: null,
       preview: '',

@@ -26,7 +26,7 @@ class GameListAPIView(generics.ListCreateAPIView):
         #     return queryset
 
         if is_owned is not None and is_owned == 'true':
-            return Game.objects.filter(is_owned=True).filter(owner=user).order_by('name')
+            return Game.objects.filter(is_owned=True).filter(owner=user).order_by('-play_status')
         elif is_owned is not None and is_owned == 'false':
             return Game.objects.filter(is_owned=False).filter(owner=user).order_by('name')
         return queryset

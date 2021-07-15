@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import Results from './Results'
+import GameResults from './GameResults'
 require('dotenv').config()
 
-const Search = () => {
+const GameSearch = () => {
 
   const [searchTerm, setSearchTerm] = useState("")
   const [gameResults, setGameResults] = useState([])
@@ -30,9 +30,9 @@ const Search = () => {
           <input type="text" value={searchTerm} onChange={handleChange}/>
           <input type="submit"/>
         </form>
-        <Results gameResults={gameResults} />
+        <GameResults gameResults={gameResults} />
     </div>
   )
 }
 
-export default Search
+export default GameSearch

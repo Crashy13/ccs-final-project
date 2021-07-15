@@ -8,11 +8,12 @@ import './App.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
 import Profile from './Profile';
-import Search from './Search'
+import GameSearch from './GameSearch'
 import GameDetail from './GameDetail'
 import Wishlist from './Wishlist'
 import ReviewSubmit from './ReviewSubmit'
 import LandingPage from './LandingPage'
+import ProfileSearch from './ProfileSearch'
 
 class App extends React.Component {
   constructor(props) {
@@ -111,8 +112,8 @@ async handleLogout() {
                   <PrivateRoute path="/profile">
                     <Profile/>
                   </PrivateRoute>
-                  <PrivateRoute path="/search">
-                    <Search/>
+                  <PrivateRoute path="/gamesearch">
+                    <GameSearch/>
                   </PrivateRoute>
                   <PrivateRoute path='/game/:name'>
                     <GameDetail/>
@@ -122,6 +123,9 @@ async handleLogout() {
                   </PrivateRoute>
                   <PrivateRoute path='/submitreview'>
                     <ReviewSubmit/>
+                  </PrivateRoute>
+                  <PrivateRoute path='/profilesearch'>
+                    <ProfileSearch/>
                   </PrivateRoute>
                 </Switch>
               </div>

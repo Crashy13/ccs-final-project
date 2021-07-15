@@ -69,14 +69,12 @@ class UserHomepage extends React.Component {
     ))
     return(
     <>
+      <div className="main-container">
       <h1>MY COLLECTION</h1>
       <Link className="create-review-link" to="/search">Add New Game To Collection</Link>
-      <br/>
-      <button>Not Started</button>
-      <button>Playing</button>
-      <button>Completed</button>
       <div className="collection-container">
-          <ul>{games}</ul>
+          <ul className="collection-list">{games}</ul>
+      </div>
       </div>
     </>
     )

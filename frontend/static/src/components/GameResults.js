@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Moment from 'react-moment'
 
-const Results = (props) => {
+const GameResults = (props) => {
   return(
     <div>
       <ul>
@@ -16,6 +17,7 @@ const Results = (props) => {
               }}>
               <h3>{game.name}</h3>
               <img src={game.background_image} alt="game"/>
+              <h3>Released:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
               </Link>
             </li>
           ))
@@ -25,4 +27,4 @@ const Results = (props) => {
   )
 }
 
-export default Results
+export default GameResults

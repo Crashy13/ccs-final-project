@@ -7,6 +7,10 @@ html {
   font-family: Open Sans, sans-serif;
 }
 
+strong {
+  color: white;
+}
+
 .App {
   text-align: center;
 }
@@ -130,4 +134,42 @@ body {
 
 .profile_picture {
   border-radius: 50%;
+}
+
+.main-container {
+  padding-left: 1rem;
+}
+
+.collection-list {
+  width: 25%;
+}
+
+.collection-container {
+  display: flex;
+}
+
+
+.collection-item {
+  background: #676767;
+  margin: 1%;
+  flex: 5;
+}
+
+.collection-title {
+  font-size: 1.875rem;
+  text-transform: capitalize;
+  color: white;
+  text-align: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.collection-body {
+  font-size: 1.25rem;
+  color: #ECE6DC;
+  text-align: center;
+  line-height: 1;
+  margin: 0;
 }
