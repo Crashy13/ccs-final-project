@@ -59,7 +59,7 @@ class Wishlist extends React.Component {
       .then(response => response.json())
       .then(data => {
         const games = [...this.state.games]
-        const index = games.findIndex(game => game.id === game.id)
+        const index = games.findIndex(game => game.id)
         games[index] = data;
         this.setState({games})
         this.props.history.push('/userhomepage')
@@ -73,7 +73,7 @@ class Wishlist extends React.Component {
     return(
     <>
       <h1>MY WISHLIST</h1>
-      <Link className="create-review-link" to="/search">Add New Game To Wishlist</Link>
+      <Link className="create-review-link" to="/gamesearch">Add New Game To Wishlist</Link>
       <br/>
       <ul>{games}</ul>
     </>

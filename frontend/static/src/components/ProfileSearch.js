@@ -8,37 +8,15 @@ class ProfileSearch extends React.Component {
     super(props);
     this.state = {
       searchTerm: '',
-      display_name: '',
-      avatar: null,
       results: [],
-      profiles: [],
     }
-    this.addFriend = this.addFriend.bind(this)
-    this.getResults = this.getResults.bind(this)
-    this.handleInput = this.handleInput.bind(this)
+
+    this.getResults = this.getResults.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   handleInput=(e)=>{
     this.setState({searchTerm: e.target.value})
-  }
-
-  addFriend(profile) {
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': Cookies.get('csrftoken')
-      },
-      body: JSON.stringify(),
-    }
-    fetch(`/api/v1/users/profiles/user/`, options)
-      .then(response => response.json())
-      .then(data => {
-        const profiles = [...this.state.profiles]
-        const index = profiles.findIndex(profile = profile.id === profile.id)
-        profiles[index] = data;
-        this.setState({profiles})
-      })
   }
 
   getResults(e) {
@@ -67,7 +45,7 @@ class ProfileSearch extends React.Component {
           <Card.Img variant="top" src={result.avatar} />
           <Card.Body>
             <Card.Title>{result.display_name}</Card.Title>
-            <Button variant="primary" onClick={this.addFriend}>Add friend</Button>
+            <Button variant="primary" onClick={() => this.props.addFriend(result.id)}>Add friend</Button>
           </Card.Body>
         </Card>
       </li>

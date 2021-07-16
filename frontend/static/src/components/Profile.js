@@ -1,9 +1,8 @@
-import React from 'react'
-import Cookies from 'js-cookie'
-import {withRouter} from 'react-router-dom'
-import ProfileDetails from './ProfileDetails'
+import React from 'react';
+import Cookies from 'js-cookie';
+import {withRouter} from 'react-router-dom';
 import Reviews from './Reviews';
-import ProfileSearch from './ProfileSearch'
+import ProfileSearch from './ProfileSearch';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -12,8 +11,10 @@ class Profile extends React.Component {
       display_name: '',
       avatar: null,
       preview: '',
+      isEditing: false,
     }
 
+    this.addFriend = this.addFriend.bind(this);
     this.handleImage = this.handleImage.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +29,7 @@ class Profile extends React.Component {
         }
         return response.json();
       })
-      .then(data => this.setState({data})).catch(error => {
+      .then(data => this.setState({...data})).catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
       })
   }
@@ -56,46 +57,72 @@ class Profile extends React.Component {
   async handleSubmit(e) {
     e.preventDefault();
     let formData = new FormData();
-    formData.append('avatar', this.state.avatar);
+    if(this.state.avatar instanceof File) {
+      formData.append('avatar', this.state.avatar);
+    }
     formData.append('display_name', this.state.display_name);
 
+    let method;
+    let url;
+
+    if(this.state.id) {
+      method = 'PATCH';
+      url = '/api/v1/users/profiles/user/'
+    } else {
+      method = 'POST';
+      url = '/api/v1/users/profiles/';
+    }
+
     const options = {
-      method: 'POST',
+      method,
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
       body: formData,
     };
 
-    const response = await fetch('/api/v1/users/profiles/', options);
-    this.setState({response});
+    const response = await fetch(url, options);
+    console.log('Profile saved!', response);
+  }
+
+  addFriend(friendId) {
+    const friends = [...this.state.friends, friendId];
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken')
+      },
+      body: JSON.stringify({friends}),
+    }
+
+    fetch(`/api/v1/users/profiles/user/`, options)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
   }
 
   render() {
     return(
       <>
-      <ProfileSearch />
-      <div>
-        {this.state.data
-          ? (<ProfileDetails />)
-          : <form onSubmit={this.handleSubmit}>
-            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput}/>
-            <input type="file" name="avatar" onChange={this.handleImage} />
+      <ProfileSearch addFriend={this.addFriend}/>
+      <form>
+        <label htmlFor="display-name">Display name</label>
+        <input id="display-name" type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
 
-            {
-              this.state.avatar
-              ? <img src={this.state.preview} alt=""/>
-              : null
-            }
+        <div className="profile-image-container">
+          <input type="file" name="avatar" onChange={this.handleImage} />
+          { this.state.avatar && !this.state.preview && <img src={this.state.avatar} alt=""/> }
+          { this.state.preview && <img src={this.state.preview} alt=""/> }
+        </div>
 
-            <button type='submit'>Save profile?</button>
-
-          </form>}
-
-            <h1>Personal Reviews</h1>
-            <Reviews />
-
-      </div>
+        {
+          !this.state.isEditing
+          ? <button type='button' onClick={() => this.setState({isEditing: true})}>Edit</button>
+          : <button type='button' onClick={this.handleSubmit}>Save</button>
+        }
+      </form>
       </>
     )
   }

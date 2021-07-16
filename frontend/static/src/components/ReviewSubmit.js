@@ -11,8 +11,7 @@ class ReviewSubmit extends React.Component {
       title: '',
       author: '',
       body: '',
-      rating: '',
-
+      rating: parseInt('3'),
     }
 
     this.addReview = this.addReview.bind(this);
@@ -41,7 +40,7 @@ class ReviewSubmit extends React.Component {
         }
         return response.json();
       })
-      this.setState({game: '', title: '', body: '', rating:null})
+      this.setState({game: '', title: '', body: '', rating: '',})
       this.props.history.push('/profile')
   }
   render() {
@@ -52,7 +51,7 @@ class ReviewSubmit extends React.Component {
             <input className="review_input" type="text" autoComplete="off" name="game" value={this.state.game} onChange={this.handleInput} placeholder="Title of Game to Review"/>
             <input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
             <textarea className="review_input" name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
-            <input type="number" autoComplete="off" placeholder="Rating 1-5"/>
+            <input type="text" autoComplete="off" placeholder="Rating 1-5" name="rating" value={this.state.rating} onChange={this.handleInput}/>
             <br/>
             <section className="rating_scale">
               <p>Rating Scale:</p>

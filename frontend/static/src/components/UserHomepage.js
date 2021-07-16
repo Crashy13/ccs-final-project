@@ -103,7 +103,7 @@ class UserHomepage extends React.Component {
       .then(response => response.json())
       .then(data => {
         const games = [...this.state.games]
-        const index = games.findIndex(game => game.id === game.id)
+        const index = games.findIndex(game => game.id)
         games[index] = data;
         this.setState({games})
       })
@@ -118,7 +118,7 @@ class UserHomepage extends React.Component {
     <>
       <div className="main-container">
       <h1>MY COLLECTION</h1>
-      <Link className="create-review-link" to="/search">Add New Game To Collection</Link>
+      <Link className="create-review-link" to="/gamesearch">Add New Game To Collection</Link>
       <br/>
       <button className="filter-button" type="button" onClick={this.componentDidMount}>All</button>
       <button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</button>
