@@ -1,5 +1,7 @@
 import React from 'react';
-import ProfileSearchResults from './ProfileSearchResults'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Cookies from 'js-cookie'
 
 class ProfileSearch extends React.Component {
   constructor(props) {
@@ -8,13 +10,35 @@ class ProfileSearch extends React.Component {
       searchTerm: '',
       display_name: '',
       avatar: null,
+      results: [],
+      profiles: [],
     }
+    this.addFriend = this.addFriend.bind(this)
     this.getResults = this.getResults.bind(this)
     this.handleInput = this.handleInput.bind(this)
   }
 
   handleInput=(e)=>{
     this.setState({searchTerm: e.target.value})
+  }
+
+  addFriend(profile) {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken')
+      },
+      body: JSON.stringify(),
+    }
+    fetch(`/api/v1/users/profiles/user/`, options)
+      .then(response => response.json())
+      .then(data => {
+        const profiles = [...this.state.profiles]
+        const index = profiles.findIndex(profile = profile.id === profile.id)
+        profiles[index] = data;
+        this.setState({profiles})
+      })
   }
 
   getResults(e) {
@@ -26,14 +50,28 @@ class ProfileSearch extends React.Component {
         }
         return response.json();
       })
-      .then(results =>
-        this.setState(results)).catch(error => {
+      .then(results => {
+        console.dir(results);
+        this.setState({results});
+      })
+      .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
       })
       this.setState({searchTerm: ''})
   }
 
   render() {
+    const searchResults = this.state.results.map(result => (
+      <li key={result.id}>
+        <Card style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={result.avatar} />
+          <Card.Body>
+            <Card.Title>{result.display_name}</Card.Title>
+            <Button variant="primary" onClick={this.addFriend}>Add friend</Button>
+          </Card.Body>
+        </Card>
+      </li>
+    ))
     return(
       <>
         <form onSubmit={this.getResults}>
@@ -43,6 +81,7 @@ class ProfileSearch extends React.Component {
             <input type="submit" value="submit"/>
           </label>
         </form>
+        <ul>{searchResults}</ul>
         <h3>{this.state.results?.display_name}</h3>
       </>
     )

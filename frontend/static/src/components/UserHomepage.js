@@ -9,6 +9,10 @@ class UserHomepage extends React.Component {
     this.state = {
       games: [],
     }
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.filterCompleted = this.filterCompleted.bind(this)
+    this.filterPlaying = this.filterPlaying.bind(this)
+    this.filterUnstarted = this.filterUnstarted.bind(this)
     this.removeGame = this.removeGame.bind(this)
     this.updateStatus = this.updateStatus.bind(this)
   }
@@ -21,7 +25,50 @@ class UserHomepage extends React.Component {
         }
         return response.json();
       })
-      .then(data => this.setState({games:data})).catch(error => {
+      .then(data => this.setState({games:data}))
+      .catch(error => {
+        console.error('There has been a problem with your fetch request:', error)
+      })
+  }
+
+  filterCompleted() {
+    fetch(`api/v1/games/?play_status=COMPLETED`)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => this.setState({games:data}))
+      .catch(error => {
+        console.error('There has been a problem with your fetch request:', error)
+      })
+  }
+
+  filterPlaying() {
+    fetch(`api/v1/games/?play_status=PLAYING`)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => this.setState({games:data}))
+      .catch(error => {
+        console.error('There has been a problem with your fetch request:', error)
+      })
+  }
+
+  filterUnstarted() {
+    fetch(`api/v1/games/?play_status=UNSTARTED`)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => this.setState({games:data}))
+      .catch(error => {
         console.error('There has been a problem with your fetch request:', error)
       })
   }
@@ -72,6 +119,11 @@ class UserHomepage extends React.Component {
       <div className="main-container">
       <h1>MY COLLECTION</h1>
       <Link className="create-review-link" to="/search">Add New Game To Collection</Link>
+      <br/>
+      <button className="filter-button" type="button" onClick={this.componentDidMount}>All</button>
+      <button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</button>
+      <button className="filter-button" type="button" onClick={this.filterPlaying}>Playing</button>
+      <button className="filter-button" type="button" onClick={this.filterUnstarted}>Unstarted</button>
       <div className="collection-container">
           <ul className="collection-list">{games}</ul>
       </div>
