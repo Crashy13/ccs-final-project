@@ -11,7 +11,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = ['id', 'game', 'title', 'author', 'rating', 'body', 'created_at', 'is_owner']
 
         def validate_rating(self, value):
             if value < 1 or value > 5:

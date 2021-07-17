@@ -70,7 +70,6 @@ class Reviews extends React.Component {
     return(
       <>
         <ul>
-        <Link className="create-review-link" to="/submitreview">Click To Add New Review</Link>
         <section className="rating_scale">
           <p>Rating Scale:</p>
           <p>5- Highly recommend as soon as possible.</p>

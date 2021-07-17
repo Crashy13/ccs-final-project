@@ -123,6 +123,7 @@ class Profile extends React.Component {
           : <button type='button' onClick={this.handleSubmit}>Save</button>
         }
       </form>
+      <Reviews/>
       </>
     )
   }

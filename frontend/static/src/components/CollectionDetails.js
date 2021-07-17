@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import Moment from 'react-moment'
 
 class CollectionDetails extends React.Component {
@@ -41,6 +41,8 @@ class CollectionDetails extends React.Component {
         <div className="collection-body">
         <img src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Collection:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
+        <br/>
+        <Link className="create-review-link" to="/submitreview">Click To Add Review</Link>
         <br/>
         {this.state.isEditing
           ? <form onSubmit={this.handleSubmit}>

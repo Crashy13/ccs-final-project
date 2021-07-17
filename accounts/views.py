@@ -1,9 +1,9 @@
-from rest_framework import generics
-
-from .models import Profile
-from .serializers import ProfileSerializer
-from django.shortcuts import render, get_object_or_404
-from .permissions import IsAuthOrReadOnly
+from rest_framework import generics;
+from reviews.models import Review;
+from .models import Profile;
+from .serializers import ProfileSerializer, ReviewSerializer;
+from django.shortcuts import render, get_object_or_404;
+from .permissions import IsAuthOrReadOnly;
 
 
 class ProfileListAPIView(generics.ListCreateAPIView):
@@ -30,6 +30,22 @@ class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
+
+class ReviewListAPIView(generics.ListCreateAPIView):
+    serializer_class = ReviewSerializer
+    permission_class = (IsAuthOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Review.objects.filter(author=user)
+
+class ReviewDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+    permission_class = (IsAuthOrReadOnly,)
 
 
 class ProfileAddFollowerAPIView(generics.RetrieveUpdateAPIView):

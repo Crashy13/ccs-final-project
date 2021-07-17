@@ -7,11 +7,10 @@ class ReviewSubmit extends React.Component {
     super(props);
     this.state = {
       reviews: [],
-      game: '',
       title: '',
       author: '',
       body: '',
-      rating: parseInt('3'),
+      rating: parseInt('0'),
     }
 
     this.addReview = this.addReview.bind(this);
@@ -48,7 +47,7 @@ class ReviewSubmit extends React.Component {
       <>
         <div className="review_container">
           <form onSubmit={this.addReview}>
-            <input className="review_input" type="text" autoComplete="off" name="game" value={this.state.game} onChange={this.handleInput} placeholder="Title of Game to Review"/>
+
             <input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
             <textarea className="review_input" name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
             <input type="text" autoComplete="off" placeholder="Rating 1-5" name="rating" value={this.state.rating} onChange={this.handleInput}/>
