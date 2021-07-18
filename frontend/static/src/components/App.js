@@ -94,7 +94,7 @@ async handleLogout() {
 
   render() {
     return (
-        <div className="main_container">
+        <div className="main-container">
           <>
             <Navbar handleNavigation={this.handleNavigation} handleLogout={this.handleLogout} />
               <div>

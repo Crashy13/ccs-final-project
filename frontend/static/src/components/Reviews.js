@@ -1,7 +1,6 @@
 import React from 'react'
 import Cookies from 'js-cookie'
 import ReviewDetails from './ReviewDetails'
-import {Link} from 'react-router-dom'
 
 class Reviews extends React.Component {
   constructor(props) {

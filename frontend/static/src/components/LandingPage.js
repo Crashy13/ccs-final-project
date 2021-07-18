@@ -5,6 +5,7 @@ class LandingPage extends React.Component {
     return(
       <>
       <div className="container">
+        <h1 className="frontpage-main-title">YOUR GAMES, YOUR WAY</h1>
       <div className="frontpage-container">
         <div className="frontpage-item">
         <i className="fas fa-gamepad frontpage-icon"></i>

@@ -1,7 +1,6 @@
 import React from 'react'
 import Cookies from 'js-cookie'
 import CollectionDetails from './CollectionDetails'
-import ReviewSubmit from './ReviewSubmit'
 import {Link} from 'react-router-dom'
 
 class UserHomepage extends React.Component {
