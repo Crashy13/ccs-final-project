@@ -1,6 +1,7 @@
-import React from 'react'
-import {withRouter, Link} from 'react-router-dom'
-import Moment from 'react-moment'
+import React from 'react';
+import {withRouter, Link} from 'react-router-dom';
+import Moment from 'react-moment';
+import ReviewSubmit from './ReviewSubmit'
 
 class CollectionDetails extends React.Component {
   constructor(props) {
@@ -8,13 +9,15 @@ class CollectionDetails extends React.Component {
     this.state = {
       isEditing: false,
       play_status: 'UNSTARTED',
+      show: false,
     }
 
-    this.handleChange = this.handleChange.bind(this)
-    this.saveStatus = this.saveStatus.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.saveStatus = this.saveStatus.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
+
 
   handleChange(e) {
     this.setState({play_status: e.target.value})
@@ -38,11 +41,11 @@ class CollectionDetails extends React.Component {
       <>
       <li className="collection-item">
         <h2 className="collection-title">{game.name}</h2>
+        <ReviewSubmit/>
         <div className="collection-body">
         <img src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Collection:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
         <br/>
-        <Link className="create-review-link" to="/submitreview">Click To Add Review</Link>
         <br/>
         {this.state.isEditing
           ? <form onSubmit={this.handleSubmit}>
@@ -66,3 +69,5 @@ class CollectionDetails extends React.Component {
 }
 
 export default withRouter(CollectionDetails)
+
+// <Link className="create-review-link" to="/submitreview">Click To Add Review</Link>
