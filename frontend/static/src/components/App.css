@@ -153,18 +153,19 @@ nav {
 }
 
 .collection-list {
-  width: 25%;
+  width: 90%;
 }
 
 .collection-container {
   display: flex;
+  flex: 1;
 }
 
 
 .collection-item {
   background: #676767;
-  margin: 1%;
-  flex: 5;
+  margin: 1rem;
+  width: 20%;
 }
 
 .collection-title {
