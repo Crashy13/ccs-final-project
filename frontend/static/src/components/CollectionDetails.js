@@ -32,7 +32,6 @@ class CollectionDetails extends React.Component {
     game.play_status = this.state.play_status;
     this.props.updateStatus(game);
     this.setState({isEditing: false})
-    this.props.history.push('/userhomepage')
   }
 
   render() {

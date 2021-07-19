@@ -55,11 +55,9 @@ INSTALLED_APPS = [
     # local
     'accounts.apps.AccountsConfig',
     'api.apps.ApiConfig',
-    'friends.apps.FriendsConfig',
     'frontend.apps.FrontendConfig',
     'games.apps.GamesConfig',
     'reviews.apps.ReviewsConfig',
-    'wishlists.apps.WishlistsConfig',
 
 ]
 

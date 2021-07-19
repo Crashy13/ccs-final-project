@@ -52,7 +52,6 @@ class ReviewSubmit extends React.Component {
         return response.json();
       })
       this.setState({game: '', title: '', body: '', rating: '',})
-      this.props.history.push('/userhomepage')
   }
   render() {
     return(
@@ -67,7 +66,6 @@ class ReviewSubmit extends React.Component {
             </Modal.Header>
             <Modal.Body>
               <form onSubmit={this.addReview}>
-                <input className="review_input" type="text" autocomplete="off" name="game" value={this.state.game} onChange={this.handleInput}/>
                 <input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
                 <textarea className="review_input" name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
                 <p>Rating (1-5):</p><input type="text" autoComplete="off" placeholder="Rating 1-5" name="rating" value={this.state.rating} onChange={this.handleInput}/>
