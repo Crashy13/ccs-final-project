@@ -50,6 +50,10 @@ p {
     color: white;
 }
 
+label {
+  color: white;
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -86,10 +90,9 @@ nav {
   color: pink;
 }
 
-.review_container {
-  width: 25%;
-  height: 100%;
-  display: flex;
+.modal-content {
+  background: grey;
+  line-height: 1;
 }
 
 .review_container > * {
@@ -165,6 +168,8 @@ nav {
   background: #676767;
   margin: 1rem;
   flex: 0 0 20%;
+  padding-bottom: 1rem;
+  border-radius: 2%;
 }
 
 .collection-title {
@@ -188,7 +193,8 @@ nav {
 
 
 input:disabled {
-  background-color: yellow;
+  background-color: #292C33;
+  color: white;
 }
 
 .profile-image-container {

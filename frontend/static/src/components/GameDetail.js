@@ -1,10 +1,16 @@
+import React, {useState} from 'react'
 import Cookies from 'js-cookie'
 import Moment from 'react-moment';
+import {Modal, Button} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom'
 
 const GameDetail = (props) => {
 
   const {game} = props.location.gameProps
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   // const person = {name: 'Scotty', developer: true, baker: true};
   //
@@ -37,16 +43,30 @@ const GameDetail = (props) => {
 
   return(
     <div>
-      <h1>{game.name}</h1>
-      <img src={game.background_image} alt="screenshot"/>
-      <h3>Released:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
-      <h3>Platform(s):</h3>
-      <p>{
-        game.platforms.map(p => `${p.platform.name} |`)
-      }</p>
-      <br/>
-      <button type="button" onClick={() => addGame(true)}>Add to Your Collection</button>
-      <button type="button" onClick={() => addGame(false)}>Add to Wishlist</button>
+    <Button variant="primary" onClick={handleShow}>
+      Show Game
+    </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{game.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <img src={game.background_image} alt="screenshot"/>
+        <h3>Released:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
+        <h3>Platform(s):</h3>
+        <p>{
+          game.platforms.map(p => `${p.platform.name} |`)
+        }</p>
+        <br/>
+        <button type="button" onClick={() => addGame(true)}>Add to Your Collection</button>
+        <button type="button" onClick={() => addGame(false)}>Add to Wishlist</button>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <p>Game data and pictures provided by <a href="https://rawg.io/">RAWG</a></p>
     </div>
   )

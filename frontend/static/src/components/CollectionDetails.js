@@ -2,6 +2,8 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import ReviewSubmit from './ReviewSubmit'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 class CollectionDetails extends React.Component {
   constructor(props) {
@@ -68,5 +70,3 @@ class CollectionDetails extends React.Component {
 }
 
 export default withRouter(CollectionDetails)
-
-// <Link className="create-review-link" to="/submitreview">Click To Add Review</Link>

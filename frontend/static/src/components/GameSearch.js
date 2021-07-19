@@ -1,15 +1,21 @@
 import React, {useState} from 'react';
-import GameResults from './GameResults'
+import GameResults from './GameResults';
+import {Modal, Button} from 'react-bootstrap';
 require('dotenv').config()
+
 
 const GameSearch = () => {
 
   const [searchTerm, setSearchTerm] = useState("")
   const [gameResults, setGameResults] = useState([])
+  const [show, setShow] = useState(false);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
   }
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -25,12 +31,26 @@ const GameSearch = () => {
   }
   return(
     <div>
-      <h1>Game Search</h1>
-        <form onSubmit={onSubmit}>
-          <input type="text" value={searchTerm} onChange={handleChange}/>
-          <input type="submit"/>
-        </form>
-        <GameResults gameResults={gameResults} />
+      <Button variant="primary" onClick={handleShow}>
+        Add New Game
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Game Search</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={onSubmit}>
+            <input type="text" value={searchTerm} onChange={handleChange}/>
+            <input type="submit"/>
+          </form>
+          <GameResults gameResults={gameResults} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

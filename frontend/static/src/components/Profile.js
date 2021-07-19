@@ -82,7 +82,8 @@ class Profile extends React.Component {
     };
 
     const response = await fetch(url, options);
-    console.log('Profile saved!', response);
+    this.setState({isEditing: false})
+    alert('Profile saved!', response);
   }
 
   addFriend(friendId) {
@@ -106,13 +107,8 @@ class Profile extends React.Component {
   render() {
     return(
       <>
-      <ProfileSearch addFriend={this.addFriend}/>
-        <div className="friends-list">
-          <h3>Friends</h3>
-          <p>{this.state.friends}</p>
-        </div>
       <form>
-        <label htmlFor="display-name">Display name</label>
+        <label htmlFor="display-name">Display name: </label>
         <input id="display-name" type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
 
         <div className="profile-image-container">
@@ -127,6 +123,13 @@ class Profile extends React.Component {
           : <button type='button' onClick={this.handleSubmit}>Save</button>
         }
       </form>
+      <ProfileSearch addFriend={this.addFriend}/>
+        <div className="friends-list">
+          <h3>Friends</h3>
+          <ul>
+            <li>{this.state.friends}</li>
+          </ul>
+        </div>
       <Reviews/>
       </>
     )

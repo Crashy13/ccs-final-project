@@ -2,6 +2,7 @@ import React from 'react'
 import Cookies from 'js-cookie'
 import CollectionDetails from './CollectionDetails'
 import {Link} from 'react-router-dom'
+import GameSearch from './GameSearch'
 
 class UserHomepage extends React.Component {
   constructor(props) {
@@ -118,7 +119,7 @@ class UserHomepage extends React.Component {
     <>
       <div className="main-container">
       <h1>MY COLLECTION</h1>
-      <Link className="create-review-link" to="/gamesearch">Add New Game To Collection</Link>
+      <GameSearch />
       <br/>
       <button className="filter-button" type="button" onClick={this.componentDidMount}>All</button>
       <button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</button>

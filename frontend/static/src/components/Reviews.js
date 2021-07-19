@@ -68,20 +68,22 @@ class Reviews extends React.Component {
     ))
     return(
       <>
-        <ul>
-        <section className="rating_scale">
-          <p>Rating Scale:</p>
-          <p>5- Highly recommend as soon as possible.</p>
-          <p>4- Recommend but not a go and get now.</p>
-          <p>3- Not a must have but still good. Maybe wait for it to be on sale.</p>
-          <p>2- Not for me. Not a bad game and could see others maybe liking it.</p>
-          <p>1- Garbage. Not even worth a try.</p>
-        </section>
-        <p>{reviews}</p>
-        </ul>
+        <h3>Reviews</h3>
+          <ul>
+            <p>{reviews}</p>
+          </ul>
       </>
     )
   }
 }
 
 export default Reviews
+
+// <section className="rating_scale">
+//   <p>Rating Scale:</p>
+//   <p>5- Highly recommend as soon as possible.</p>
+//   <p>4- Recommend but not a go and get now.</p>
+//   <p>3- Not a must have but still good. Maybe wait for it to be on sale.</p>
+//   <p>2- Not for me. Not a bad game and could see others maybe liking it.</p>
+//   <p>1- Garbage. Not even worth a try.</p>
+// </section>

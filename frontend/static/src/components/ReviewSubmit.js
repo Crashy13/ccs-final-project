@@ -62,7 +62,7 @@ class ReviewSubmit extends React.Component {
           </Button>
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closebutton>
-              <Modal.Title>Add Your Review Here</Modal.Title>
+              <Modal.Title className="review-title">Add Your Review Here</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <form onSubmit={this.addReview}>

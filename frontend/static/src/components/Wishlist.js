@@ -2,6 +2,7 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import CollectionDetails from './WishlistDetails'
+import GameSearch from './GameSearch'
 import {Link} from 'react-router-dom'
 
 class Wishlist extends React.Component {
@@ -74,7 +75,7 @@ class Wishlist extends React.Component {
     <>
       <div className="main-container">
       <h1>MY WISHLIST</h1>
-      <Link className="create-review-link" to="/gamesearch">Add New Game To Wishlist</Link>
+      <GameSearch />
       <br/>
       <div className="collection-container">
       <ul className="collection-list">{games}</ul>

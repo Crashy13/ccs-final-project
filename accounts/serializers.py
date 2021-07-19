@@ -21,6 +21,8 @@ class ReviewSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     # reviews = ReviewListingField(many=True, read_only=True)
     reviews = ReviewSerializer(many=True, read_only=True)
+
+
     class Meta:
         model = Profile
         fields = ['id', 'user', 'avatar', 'display_name', 'friends', 'reviews']

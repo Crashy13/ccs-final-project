@@ -31,15 +31,15 @@ class Login extends React.Component {
       <div className='login_container'>
           <form onSubmit={this.handleSubmit}>
               <label>
-                <p>Username</p>
+                <h3>Username</h3>
                 <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleInput}/>
               </label>
               <label>
-                <p>Email</p>
+                <h3>Email</h3>
                 <input type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleInput}/>
               </label>
               <label>
-                <p>Password</p>
+                <h3>Password</h3>
                 <input type="password" placeholder="password" name="password" value={this.state.password1} onChange={this.handleInput}/>
               </label>
                 <h5>Press to login</h5>
