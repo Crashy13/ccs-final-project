@@ -7,7 +7,9 @@ class ReviewDetails extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      body: this.props.review.body
+      title: this.props.review.title,
+      body: this.props.review.body,
+      rating: this.props.review.rating,
     }
 
     this.handleInput = this.handleInput.bind(this)
@@ -33,15 +35,19 @@ class ReviewDetails extends React.Component {
       <div>
         <li>
           <h2>{review.game}</h2>
-          <h3>{review.title}</h3>
+          {this.state.isEditing
+            ?<input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput}/>
+            :<h3>{review.title}</h3>
+          }
           <Moment format="MM/DD/YYYY hh:mm">{review.created_at}</Moment>
           {this.state.isEditing
             ? <textarea cols="30" row="10" name="body" value={this.state.body} onChange={this.handleInput} />
             : <p>{review.body}</p>
           }
-          <h4>My Rating: {review.rating}</h4>
-
-
+          {this.state.isEditing
+            ?<input type="text" autoComplete="off" placeholder="Rating 1-5" name="rating" value={this.state.rating} onChange={this.handleInput}/>
+            :<h4>My Rating: {review.rating}</h4>
+          }
           {this.state.isEditing
             ? <button type="button" onClick={this.saveReview}>Save</button>
             : review.is_owner && <button type="button" onClick={() => this.setState({isEditing: true})}>Edit</button>

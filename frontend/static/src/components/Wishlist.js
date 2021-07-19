@@ -72,10 +72,14 @@ class Wishlist extends React.Component {
     ))
     return(
     <>
+      <div className="main-container">
       <h1>MY WISHLIST</h1>
       <Link className="create-review-link" to="/gamesearch">Add New Game To Wishlist</Link>
       <br/>
-      <ul>{games}</ul>
+      <div className="collection-container">
+      <ul className="collection-list">{games}</ul>
+      </div>
+    </div>
     </>
     )
   }

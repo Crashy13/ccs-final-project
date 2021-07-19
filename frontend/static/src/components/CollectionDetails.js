@@ -41,9 +41,8 @@ class CollectionDetails extends React.Component {
       <>
       <li className="collection-item">
         <h2 className="collection-title">{game.name}</h2>
-        <ReviewSubmit/>
-        <br/>
-        <div className="collection-body">
+        
+        <section className="collection-body">
         <img src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Collection:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
         <br/>
@@ -62,7 +61,7 @@ class CollectionDetails extends React.Component {
           : <button type="button" onClick={() => this.setState({isEditing: true})}>Change Play Status</button>}
 
         <button type="button" onClick={() => this.props.removeGame(game.id)}>Remove</button>
-        </div>
+        </section>
       </li>
       </>
     )
