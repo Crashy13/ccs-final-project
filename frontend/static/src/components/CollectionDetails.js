@@ -2,8 +2,9 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import ReviewSubmit from './ReviewSubmit'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import GameReviews from './GameReviews'
+import {Card, Button} from 'react-bootstrap/'
+
 
 class CollectionDetails extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class CollectionDetails extends React.Component {
       <li className="collection-item">
         <h2 className="collection-title">{game.name}</h2>
         <section className="collection-body">
-        <ReviewSubmit/>
+        <ReviewSubmit game={game}/>
         <img src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Collection:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
         <br/>
@@ -58,10 +59,11 @@ class CollectionDetails extends React.Component {
             </form>
           : <p>Play Status: {game.play_status}</p>}
         {this.state.isEditing
-          ? <button type="button" onClick={this.saveStatus}>Save</button>
-          : <button type="button" onClick={() => this.setState({isEditing: true})}>Change Play Status</button>}
+          ? <Button className="collection-button" type="button" onClick={this.saveStatus}>Save</Button>
+          : <Button className="collection-button" type="button" onClick={() => this.setState({isEditing: true})}>Change Play Status</Button>}
 
-        <button type="button" onClick={() => this.props.removeGame(game.id)}>Remove</button>
+        <Button className="collection-button" type="button" onClick={() => this.props.removeGame(game.id)}>Remove</Button>
+        <GameReviews />
         </section>
       </li>
       </>

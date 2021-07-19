@@ -1,5 +1,7 @@
-import React from 'react'
-import Moment from 'react-moment'
+import React from 'react';
+import Moment from 'react-moment';
+import {Button} from 'react-bootstrap';
+import GameReviews from './GameReviews'
 
 
 class WishlistDetails extends React.Component {
@@ -20,8 +22,9 @@ class WishlistDetails extends React.Component {
         <img src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Wishlist:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
         <br/>
-        <button type="button" onClick={() => this.props.updateOwned(game.id)}>Add to Collection</button>
-        <button type="button" onClick={() => this.props.removeGame(game.id)}>Remove</button>
+        <Button className="collection-button" type="button" onClick={() => this.props.updateOwned(game.id)}>Add to Collection</Button>
+        <Button className="collection-button" type="button" onClick={() => this.props.removeGame(game.id)}>Remove</Button>
+        <GameReviews />
         </section>
       </li>
       </>

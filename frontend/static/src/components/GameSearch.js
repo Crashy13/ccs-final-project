@@ -31,7 +31,7 @@ const GameSearch = () => {
   }
   return(
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className="collection-button" variant="primary" onClick={handleShow}>
         Add New Game
       </Button>
       <Modal show={show} onHide={handleClose}>

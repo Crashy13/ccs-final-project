@@ -9,10 +9,10 @@ class ReviewSubmit extends React.Component {
     this.state = {
       reviews: [],
       title: '',
-      author: '',
       body: '',
       rating: parseInt('0'),
       show: false,
+      game: this.props.game.id,
     }
 
     this.addReview = this.addReview.bind(this);
@@ -57,7 +57,7 @@ class ReviewSubmit extends React.Component {
     return(
       <>
         <div className="review_container">
-          <Button variant="primary" onClick={this.handleShow}>
+          <Button className="collection-button" variant="primary" onClick={this.handleShow}>
             Add Review
           </Button>
           <Modal show={this.state.show} onHide={this.handleClose}>

@@ -9,6 +9,8 @@ class ReviewSerializer(serializers.ModelSerializer):
     def get_owner_status(self, obj):
         return obj.author == self.context['request'].user
 
+
+
     class Meta:
         model = Review
         fields = ['id', 'game', 'title', 'author', 'rating', 'body', 'created_at', 'is_owner']
