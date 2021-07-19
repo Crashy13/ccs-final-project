@@ -23,6 +23,7 @@ const GameResults = (props) => {
           ))
         }
       </ul>
+      <p>Game data and pictures provided by <a href="https://rawg.io/">RAWG</a></p>
     </div>
   )
 }

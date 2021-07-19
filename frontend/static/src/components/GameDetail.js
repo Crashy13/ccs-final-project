@@ -47,6 +47,7 @@ const GameDetail = (props) => {
       <br/>
       <button type="button" onClick={() => addGame(true)}>Add to Your Collection</button>
       <button type="button" onClick={() => addGame(false)}>Add to Wishlist</button>
+      <p>Game data and pictures provided by <a href="https://rawg.io/">RAWG</a></p>
     </div>
   )
 }

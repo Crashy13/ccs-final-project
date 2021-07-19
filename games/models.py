@@ -13,8 +13,8 @@ class Game(models.Model):
         (UNSTARTED, 'Unstarted')
     ]
 
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=255, null=True, blank=True, unique=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, related_name="owner")
+    name = models.CharField(max_length=255, null=True, blank=True)
     background_image = models.URLField(null=True, blank=True)
     is_owned = models.BooleanField(default=False, null=True, blank=True)
     play_status = models.CharField(max_length=15, choices=STATUS_CHOICES, default=UNSTARTED, null=True, blank=True)
