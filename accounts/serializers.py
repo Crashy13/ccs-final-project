@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from reviews.models import Review
 from .models import Profile
+
+User = get_user_model()
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -18,11 +21,21 @@ class ReviewSerializer(serializers.ModelSerializer):
 #     def to_representation(self, value):
 #         title = (value.title)
 
+
+class FriendSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = Profile
+        fields = ['avatar', 'display_name', 'user']
+
+
 class ProfileSerializer(serializers.ModelSerializer):
-    # reviews = ReviewListingField(many=True, read_only=True)
+    friends = FriendSerializer(many=True, read_only=True)
     reviews = ReviewSerializer(many=True, read_only=True)
 
 
     class Meta:
         model = Profile
         fields = ['id', 'user', 'avatar', 'display_name', 'friends', 'reviews']
+        depth = 1
