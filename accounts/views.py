@@ -29,6 +29,7 @@ class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return get_object_or_404(Profile, user=self.request.user)
 
     def perform_update(self, serializer):
+        # import pdb; pdb.set_trace()
         serializer.save(user=self.request.user)
 
 class ReviewListAPIView(generics.ListCreateAPIView):
@@ -54,7 +55,8 @@ class ProfileAddFollowerAPIView(generics.RetrieveUpdateAPIView):
 
 
 
-    # def perform_update(self, serializer):
-    #     # once you have the profile
-    #     # add the self.request.user to the profile.friends relationship
-    #     serializer.save()
+    def perform_update(self, serializer):
+        import pdb; pdb.set_trace()
+        # once you have the profile
+        # add the self.request.user to the profile.friends relationship
+        serializer.save()

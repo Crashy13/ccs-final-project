@@ -59,6 +59,10 @@ class GameDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
         return queryset
 
-# class GameReviewListAPIView(generics.RetrieveAPIView):
-#     serializer_class = ReviewSerializer
-#
+class FriendGameListAPIView(generics.ListAPIView):
+    serializer_class = GameSerializer
+
+    def get_queryset(self):
+        is_owned = self.request.query_params.get('is_owned')
+        owner = self.request.query_params.get('owner')
+        return Game.objects.filter(owner__username=owner).filter(is_owned=True)

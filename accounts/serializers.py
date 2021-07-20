@@ -38,4 +38,3 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['id', 'user', 'avatar', 'display_name', 'friends', 'reviews']
-        depth = 1

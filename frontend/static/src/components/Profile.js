@@ -3,19 +3,21 @@ import Cookies from 'js-cookie';
 import {withRouter} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import FriendList from './FriendList';
+import ProfileSearch from './ProfileSearch'
 
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      friends: [],
       display_name: '',
       avatar: null,
       preview: '',
       isEditing: false,
     }
 
-
+    this.addFriend = this.addFriend.bind(this);
     this.handleImage = this.handleImage.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -87,12 +89,40 @@ class Profile extends React.Component {
     alert('Profile saved!', response);
   }
 
+  addFriend(friendId) {
+    const friends = [...this.state.friends, friendId];
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken')
+      },
+      body: JSON.stringify({friends}),
+    }
+
+    fetch(`/api/v1/users/profiles/user/`, options)
+      .then(response => response.json())
+      .then(data => {
+        this.setState(data);
+        console.log(data);
+      })
+  }
+
   render() {
+    const friends = this.state.friends.map(friend => (
+      <li key={friend.id}>
+        <p>{friend.display_name}</p>
+      </li>
+    ))
     return(
       <>
       <div className="profile-main-container">
         <div className="friends-list">
-          <FriendList />
+          <ProfileSearch addFriend={this.addFriend}/>
+            <h3>Friends</h3>
+            <ul>
+              <p>{friends}</p>
+            </ul>
         </div>
         <div className="profile-details">
           <form>

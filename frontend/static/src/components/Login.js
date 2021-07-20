@@ -1,6 +1,7 @@
-import React from 'react'
-import Registration from './Registration'
-
+import React from 'react';
+import Cookies from 'js-cookie';
+import Registration from './Registration';
+import {withRouter} from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -14,6 +15,7 @@ class Login extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRegistration = this.handleRegistration.bind(this);
 
   }
 
@@ -24,6 +26,26 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.handleLogin(this.state)
+  }
+
+  async handleRegistration(user) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(user),
+    };
+
+    const handleError = (err) => console.warn(err);
+    const response = await fetch('/rest-auth/registration/', options).catch(handleError);
+
+    if(response.ok) {
+      const data = await response.json().catch(handleError);
+      Cookies.set('Authorization', `Token ${data.key}`)
+      this.props.history.push('/profile')
+    }
   }
 
 
@@ -49,7 +71,7 @@ class Login extends React.Component {
           </form>
         </div>
         <div className="registration-container">
-        <Registration />
+        <Registration handleRegistration={this.handleRegistration}/>
         </div>
         </div>
         </>
@@ -57,4 +79,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default withRouter(Login)
