@@ -1,7 +1,6 @@
 import React from 'react'
 import Cookies from 'js-cookie'
 import CollectionDetails from './CollectionDetails'
-import {Link} from 'react-router-dom'
 import GameSearch from './GameSearch'
 
 class UserHomepage extends React.Component {

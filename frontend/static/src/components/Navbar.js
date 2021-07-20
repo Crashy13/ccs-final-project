@@ -7,12 +7,11 @@ function Navbar(props) {
     <nav>
       <ul className="nav-links">
         <li className="navbar-links"><Link to="/" className="nav-link">Home</Link></li>
-        <li className="navbar-links">{!Cookies.get('Authorization') && <Link to="/login" className="nav-link">Login</Link>}</li>
-        <li className="navbar-links">{!Cookies.get('Authorization') && <Link to="/register" className="nav-link">Register</Link>}</li>
-        <li className="navbar-links">{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">Collection</Link>}</li>
-        <li className="navbar-links">{!!Cookies.get('Authorization') && <Link to="/wishlist" className="nav-link">Wishlist</Link>}</li>
-        <li className="navbar-links">{!!Cookies.get('Authorization') && <Link to="/profile" className="nav-link">Profile</Link>}</li>
-        <li className="navbar-links">{!!Cookies.get('Authorization') && <Link to="/" className="nav-link" onClick={() => props.handleLogout('login')}>Logout</Link>}</li>
+        <li className="navbar-links">{!Cookies.get('Authorization') && <Link to="/login" className="nav-link">Login / Register</Link>}</li>
+        <li className="user-links">{!!Cookies.get('Authorization') && <Link to="/userhomepage" className="nav-link">Collection</Link>}</li>
+        <li className="user-links">{!!Cookies.get('Authorization') && <Link to="/wishlist" className="nav-link">Wishlist</Link>}</li>
+        <li className="user-links">{!!Cookies.get('Authorization') && <Link to="/profile" className="nav-link">Profile</Link>}</li>
+        <li className="user-links">{!!Cookies.get('Authorization') && <Link to="/" className="nav-link" onClick={() => props.handleLogout('login')}>Logout</Link>}</li>
       </ul>
     </nav>
   )

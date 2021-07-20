@@ -2,7 +2,6 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import {withRouter} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
-import Reviews from './Reviews';
 import FriendList from './FriendList';
 
 

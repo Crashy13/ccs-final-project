@@ -26,20 +26,25 @@ class Registration extends React.Component {
 
   render() {
     return(
-      <div className="registration_container">
           <form onSubmit={this.handleSubmit}>
             <h3>Choose A Username</h3>
-            <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleInput}/>
+            <label for="username"></label>
+              <input id="username" type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleInput}/>
+              <br/>
             <h3>Enter Your Email Address</h3>
-            <input type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+            <label for="email"></label>
+              <input id="email" type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+              <br/>
             <h3>Choose A Password</h3>
-            <input type="password" placeholder="password" name="password1" value={this.state.password1} onChange={this.handleInput}/>
+            <label for="password1"></label>
+              <input id="password1" type="password" placeholder="password" name="password1" value={this.state.password1} onChange={this.handleInput}/>
+              <br/>
             <h3>Enter Your Password Again</h3>
-            <input type="password" placeholder="enter password again" name="password2" value={this.state.password2} onChange={this.handleInput}/>
-            <h3>Click the button below to create your account!</h3>
+            <label for="password2"></label>
+              <input id="password2" type="password" placeholder="enter password again" name="password2" value={this.state.password2} onChange={this.handleInput}/>
+              <br/>
             <button className="login_button" type="Submit">Register</button>
           </form>
-        </div>
     )
   }
 }

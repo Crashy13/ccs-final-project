@@ -64,27 +64,72 @@ nav {
   text-transform: uppercase;
 }
 
- nav > * {
+.nav-links {
    display: flex;
-   width: 40%;
+   width: 100%;
    margin: 0;
+ }
+
+ .navbar-links {
+   margin: 2% 0;
+   flex: 1;
+ }
+
+ .user-links {
+   margin: 2% 0;
+   flex: 1;
+ }
+
+.nav-link {
+  color: white;
+  width: 100%;
+  padding: 0;
+}
+
+ .login-page-container {
+   display: flex;
+   height: 40rem;
+ }
+
+ .login-container {
+   display: flex;
+   background: #676767;
+   border: 10px solid #387E54;
+   border-radius: 3%;
+   width: 33%;
+   flex: 1;
+   margin: auto 5%;
+   height: 25rem;
+ }
+
+ .login-container>* {
+    text-align: center;
+    margin: auto;
+ }
+
+ .registration-container {
+   display: flex;
+   background: #676767;
+   border: 10px solid #387E54;
+   border-radius: 3%;
+   width: 33%;
+   flex: 1;
+   margin: auto 5%;
+   height: 25rem;
+ }
+
+ .registration-container>* {
+     text-align: center;
+     margin: auto;
  }
 
  .release-date {
    color: white;
  }
 
- .navbar-links {
-   margin: 5% 10%;
+ .main-container {
+   background: #292C33;
  }
-
-.main-container {
-  background: #292C33;
-}
-
-.nav-link {
-  color: white;
-}
 
 .create-review-link {
   color: pink;

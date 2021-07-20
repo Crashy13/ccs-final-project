@@ -3,7 +3,6 @@ import {withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import CollectionDetails from './WishlistDetails'
 import GameSearch from './GameSearch'
-import {Link} from 'react-router-dom'
 
 class Wishlist extends React.Component {
   constructor(props) {
@@ -74,12 +73,14 @@ class Wishlist extends React.Component {
     return(
     <>
       <div className="main-container">
-      <h1>MY WISHLIST</h1>
-      <GameSearch />
-      <br/>
-      <div className="collection-container">
-      <ul className="collection-list">{games}</ul>
-      </div>
+        <div className="collection-main-container">
+          <h1>MY WISHLIST</h1>
+          <GameSearch />
+          <br/>
+          <div className="collection-container">
+          <ul className="collection-list">{games}</ul>
+          </div>
+        </div>
     </div>
     </>
     )

@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import ReviewSubmit from './ReviewSubmit'
 import GameReviews from './GameReviews'
-import {Card, Button} from 'react-bootstrap/'
+import {Button} from 'react-bootstrap/'
 
 
 class CollectionDetails extends React.Component {

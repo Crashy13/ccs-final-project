@@ -1,4 +1,5 @@
 import React from 'react'
+import Registration from './Registration'
 
 
 
@@ -28,24 +29,30 @@ class Login extends React.Component {
 
   render() {
     return(
-      <div className='login_container'>
+      <>
+      <div className="login-page-container">
+      <div className='login-container'>
           <form onSubmit={this.handleSubmit}>
-              <label>
-                <h3>Username</h3>
-                <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleInput}/>
-              </label>
-              <label>
-                <h3>Email</h3>
-                <input type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleInput}/>
-              </label>
-              <label>
-                <h3>Password</h3>
-                <input type="password" placeholder="password" name="password" value={this.state.password1} onChange={this.handleInput}/>
-              </label>
-                <h5>Press to login</h5>
+              <h3>Enter Username</h3>
+              <label for="username"></label>
+                <input type="text" id="username" placeholder="username" name="username" value={this.state.username} onChange={this.handleInput}/>
+                <br/>
+              <h3>Enter Email</h3>
+              <label for="email"></label>
+                <input id="email" type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+                <br/>
+              <h3>Enter Password</h3>
+              <label for="password"></label>
+                <input type="password" placeholder="password" id="password" name="password" value={this.state.password1} onChange={this.handleInput}/>
+                <br/>
                 <button className="login_button" type="Submit" onClick={this.redirectToHome}>Submit</button>
           </form>
         </div>
+        <div className="registration-container">
+        <Registration />
+        </div>
+        </div>
+        </>
     )
   }
 }
