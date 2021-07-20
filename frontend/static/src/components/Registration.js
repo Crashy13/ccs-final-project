@@ -43,7 +43,7 @@ class Registration extends React.Component {
             <label for="password2"></label>
               <input id="password2" type="password" placeholder="enter password again" name="password2" value={this.state.password2} onChange={this.handleInput}/>
               <br/>
-            <button className="login_button" type="Submit">Register</button>
+            <button className="login-button" type="Submit">Register</button>
           </form>
     )
   }

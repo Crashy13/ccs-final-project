@@ -4,7 +4,8 @@ import {Button, Modal} from 'react-bootstrap';
 class GameReviews extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
+      ...this.props.game,
       reviews: [],
       show: false,
     }
@@ -14,16 +15,16 @@ class GameReviews extends React.Component {
 
 }
 
-handleShow() {
-  this.setState({show:true})
-}
+  handleShow() {
+    this.setState({show:true})
+  }
 
-handleClose() {
-  this.setState({show:false})
-}
+  handleClose() {
+    this.setState({show:false})
+  }
 
   componentDidMount() {
-    fetch(`/api/v1/reviews/games/?game=${this.state.game}`)
+    fetch(`/api/v1/reviews/games/?game=${this.state.name}`)
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');

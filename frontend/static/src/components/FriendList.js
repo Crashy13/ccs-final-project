@@ -49,6 +49,7 @@ class FriendList extends React.Component {
   render() {
     const friends = this.state.friends.map(friend => (
       <li key={friend.id}>
+        <img className="friend-list-avatar" src={friend.avatar} alt=""/>
         <p>{friend.display_name}</p>
       </li>
     ))

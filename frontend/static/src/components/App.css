@@ -140,15 +140,6 @@ nav {
   line-height: 1;
 }
 
-.review_container > * {
-  align-self: center;
-  padding: 2% 15%;
-}
-
-.review_input {
-  margin-bottom: 2px;
-}
-
 .frontpage-container {
   display: flex;
   width: 75%;
@@ -194,10 +185,6 @@ nav {
   text-align: center;
   line-height: 1.5;
   margin: 0;
-}
-
-.profile_picture {
-  border-radius: 50%;
 }
 
 .collection-main-container{
@@ -282,6 +269,12 @@ input:disabled {
   width: 33%;
   margin: 1% auto;
   padding: 1%
+}
+
+.friend-list-avatar {
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
 }
 
 .profile-image-container {

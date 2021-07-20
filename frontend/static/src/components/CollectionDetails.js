@@ -63,7 +63,7 @@ class CollectionDetails extends React.Component {
           : <Button className="collection-button" type="button" onClick={() => this.setState({isEditing: true})}>Change Play Status</Button>}
 
         <Button className="collection-button" type="button" onClick={() => this.props.removeGame(game.id)}>Remove</Button>
-        <GameReviews />
+        <GameReviews game={game}/>
         </section>
       </li>
       </>

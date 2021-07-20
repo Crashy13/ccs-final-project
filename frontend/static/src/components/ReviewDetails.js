@@ -38,7 +38,7 @@ class ReviewDetails extends React.Component {
           <h2>{review.game}</h2>
           <Moment format="MM/DD/YYYY hh:mm">{review.created_at}</Moment>
           {this.state.isEditing
-            ?<input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput}/>
+            ?<input type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput}/>
             :<h3>{review.title}</h3>
           }
           {this.state.isEditing

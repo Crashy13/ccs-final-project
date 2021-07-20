@@ -61,7 +61,7 @@ class ReviewSubmit extends React.Component {
   render() {
     return(
       <>
-        <div className="review_container">
+        <div>
           <Button className="collection-button" variant="primary" onClick={this.handleShow}>
             Add Review
           </Button>
@@ -71,8 +71,8 @@ class ReviewSubmit extends React.Component {
             </Modal.Header>
             <Modal.Body>
               <form onSubmit={this.addReview}>
-                <input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
-                <textarea className="review_input" name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
+                <input type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
+                <textarea name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
                 <p>Rating (1-5):</p>
                 <select value={this.state.rating} onChange={this.handleChange}>
                   <option value="1">1</option>
@@ -81,7 +81,7 @@ class ReviewSubmit extends React.Component {
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
-                <section className="rating_scale">
+                <section className="rating-scale">
                   <p>Rating Scale:</p>
                   <p>5- Highly recommend as soon as possible.</p>
                   <p>4- Recommend but not a go and get now.</p>
