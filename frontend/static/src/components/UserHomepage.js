@@ -118,17 +118,19 @@ class UserHomepage extends React.Component {
     return(
     <>
       <div className="main-container">
-      <h1>MY COLLECTION</h1>
-      <GameSearch />
-      <br/>
-      <button className="filter-button" type="button" onClick={this.componentDidMount}>All</button>
-      <button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</button>
-      <button className="filter-button" type="button" onClick={this.filterPlaying}>Playing</button>
-      <button className="filter-button" type="button" onClick={this.filterUnstarted}>Unstarted</button>
-      <div className="collection-container">
-          <ul className="collection-list">{games}</ul>
+        <div className="collection-main-container">
+          <h1>MY COLLECTION</h1>
+          <GameSearch />
+          <br/>
+          <button className="filter-button" type="button" onClick={this.componentDidMount}>All</button>
+          <button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</button>
+          <button className="filter-button" type="button" onClick={this.filterPlaying}>Playing</button>
+          <button className="filter-button" type="button" onClick={this.filterUnstarted}>Unstarted</button>
+          <div className="collection-container">
+              <ul className="collection-list">{games}</ul>
+          </div>
+        </div>
       </div>
-    </div>
     </>
     )
   }

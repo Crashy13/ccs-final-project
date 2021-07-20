@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import {Button} from 'react-bootstrap';
 
 class ReviewDetails extends React.Component {
   constructor(props) {
@@ -49,11 +50,11 @@ class ReviewDetails extends React.Component {
             :<h4>My Rating: {review.rating}</h4>
           }
           {this.state.isEditing
-            ? <button type="button" onClick={this.saveReview}>Save</button>
-            : review.is_owner && <button type="button" onClick={() => this.setState({isEditing: true})}>Edit</button>
+            ? <Button className="collection-button" type="button" onClick={this.saveReview}>Save</Button>
+            : review.is_owner && <Button className="collection-button" type="button" onClick={() => this.setState({isEditing: true})}>Edit</Button>
           }
 
-          {review.is_owner && <button type="button" onClick={() => this.props.deleteReview(review.id)}>Delete</button>}
+          {review.is_owner && <Button className="collection-button" type="button" onClick={() => this.props.deleteReview(review.id)}>Delete</Button>}
         </li>
 
       </div>

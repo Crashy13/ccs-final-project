@@ -23,7 +23,7 @@ handleClose() {
 }
 
   componentDidMount() {
-    fetch(`/api/v1/reviews/games/?game=Hades`)
+    fetch(`/api/v1/reviews/games/?game=${this.state.game}`)
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');

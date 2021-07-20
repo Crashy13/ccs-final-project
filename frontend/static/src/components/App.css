@@ -17,8 +17,8 @@ strong {
 }
 
 img {
-  width: 13rem;
-  height: 10rem;
+  width: 20rem;
+  height: 12rem;
 }
 
 div {
@@ -155,6 +155,10 @@ nav {
   border-radius: 50%;
 }
 
+.collection-main-container{
+  padding: 1%;
+}
+
 .collection-list {
   display: flex;
   width: 90%;
@@ -207,8 +211,43 @@ input:disabled {
   color: white;
 }
 
+.profile-main-container {
+  display: flex;
+  flex: 1;
+}
+
+.profile-details {
+  background: #676767;
+  border: 10px solid #387E54;
+  border-radius: 5%;
+  width: 25%;
+  margin: 1% auto;
+  padding: 5%
+}
+
+.profile-details>* {
+  align-items: center;
+  margin: 1%;
+}
+
+.friends-list {
+  background: #676767;
+  border: 10px solid #387E54;
+  border-radius: 5%;
+  width: 33%;
+  margin: 1% auto;
+  padding: 1%
+}
+
 .profile-image-container {
   position: relative;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin-top: 15%
 }
 
 .profile-image-container>input{
@@ -219,4 +258,5 @@ input:disabled {
   left: 0;
   opacity: 0;
   z-index: 2;
+  width: 100%;
 }

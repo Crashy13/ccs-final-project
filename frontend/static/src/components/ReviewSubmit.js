@@ -10,7 +10,7 @@ class ReviewSubmit extends React.Component {
       reviews: [],
       title: '',
       body: '',
-      rating: parseInt('0'),
+      rating: '',
       show: false,
       game: this.props.game.id,
     }
@@ -19,6 +19,7 @@ class ReviewSubmit extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
   }
 
@@ -28,6 +29,10 @@ class ReviewSubmit extends React.Component {
 
   handleClose() {
     this.setState({show:false})
+  }
+
+  handleChange(e) {
+    this.setState({rating: e.target.value})
   }
 
   handleInput(e) {
@@ -68,7 +73,14 @@ class ReviewSubmit extends React.Component {
               <form onSubmit={this.addReview}>
                 <input className="review_input" type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput} placeholder="Title of Review"/>
                 <textarea className="review_input" name="body" value={this.state.body} onChange={this.handleInput} id="" cols="30" rows="10" placeholder="Your thoughts"></textarea>
-                <p>Rating (1-5):</p><input type="text" autoComplete="off" placeholder="Rating 1-5" name="rating" value={this.state.rating} onChange={this.handleInput}/>
+                <p>Rating (1-5):</p>
+                <select value={this.state.rating} onChange={this.handleChange}>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
                 <section className="rating_scale">
                   <p>Rating Scale:</p>
                   <p>5- Highly recommend as soon as possible.</p>

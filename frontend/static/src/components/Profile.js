@@ -1,8 +1,10 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import {withRouter} from 'react-router-dom';
+import {Button} from 'react-bootstrap';
 import Reviews from './Reviews';
-import ProfileSearch from './ProfileSearch';
+import FriendList from './FriendList';
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class Profile extends React.Component {
       isEditing: false,
     }
 
-    this.addFriend = this.addFriend.bind(this);
+
     this.handleImage = this.handleImage.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -86,28 +88,13 @@ class Profile extends React.Component {
     alert('Profile saved!', response);
   }
 
-  addFriend(friendId) {
-    const friends = [...this.state.friends, friendId];
-    const options = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': Cookies.get('csrftoken')
-      },
-      body: JSON.stringify({friends}),
-    }
-
-    fetch(`/api/v1/users/profiles/user/`, options)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-  }
-
   render() {
     return(
       <>
-      <div className="profile-main-container"></div>
+      <div className="profile-main-container">
+        <div className="friends-list">
+          <FriendList />
+        </div>
         <div className="profile-details">
           <form>
             <label htmlFor="display-name">Display name: </label>
@@ -115,25 +102,17 @@ class Profile extends React.Component {
 
             <div className="profile-image-container">
               <input type="file" name="avatar" onChange={this.handleImage} />
-              { this.state.avatar && !this.state.preview && <img src={this.state.avatar} alt=""/> }
-              { this.state.preview && <img src={this.state.preview} alt=""/> }
+              { this.state.avatar && !this.state.preview && <img className="profile-image" src={this.state.avatar} alt=""/> }
+              { this.state.preview && <img className="profile-image" src={this.state.preview} alt=""/> }
             </div>
 
             {
               !this.state.isEditing
-              ? <button type='button' onClick={() => this.setState({isEditing: true})}>Edit</button>
-              : <button type='button' onClick={this.handleSubmit}>Save</button>
+              ? <Button className="collection-button" type='button' onClick={() => this.setState({isEditing: true})}>Edit</Button>
+              : <Button className="collection-button" type='button' onClick={this.handleSubmit}>Save</Button>
             }
           </form>
         </div>
-        <ProfileSearch addFriend={this.addFriend}/>
-          <div className="friends-list">
-            <h3>Friends</h3>
-            <ul>
-              <li>{this.state.friends}</li>
-            </ul>
-          </div>
-        <Reviews/>
       </div>
       </>
     )
