@@ -14,7 +14,7 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/v1/reviews/')
+    fetch('/api/v1/reviews/games/?game=Hades')
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');
@@ -57,7 +57,7 @@ class Reviews extends React.Component {
       .then(response => response.json())
       .then(data => {
         const reviews = [...this.state.reviews];
-        const index = reviews.findIndex(body => body.id === review.id);
+        const index = reviews.findIndex(review => review.id === review);
         reviews[index] = data;
         this.setState({reviews})
       });
@@ -70,9 +70,7 @@ class Reviews extends React.Component {
     return(
       <>
         <h3>Reviews</h3>
-          <ul>
-            <p>{reviews}</p>
-          </ul>
+          <ul>{reviews}</ul>
       </>
     )
   }

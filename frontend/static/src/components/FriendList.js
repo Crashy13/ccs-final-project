@@ -1,6 +1,5 @@
 import React from 'react'
 import ProfileSearch from './ProfileSearch'
-import Cookies from 'js-cookie'
 
 class FriendList extends React.Component {
   constructor(props) {

@@ -1,5 +1,4 @@
 import React from 'react';
-import CollectionDetails from './CollectionDetails'
 import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import GameReviews from './GameReviews';

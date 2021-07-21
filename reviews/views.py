@@ -20,6 +20,7 @@ class ReviewDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ReviewSerializer
     permission_class = (IsAuthOrReadOnly,)
 
+
 class GameReviewListAPIView(generics.ListAPIView):
     serializer_class = ReviewSerializer
     permission_class = (IsAuthOrReadOnly,)

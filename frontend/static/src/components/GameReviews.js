@@ -72,10 +72,13 @@ class GameReviews extends React.Component {
       .then(response => response.json())
       .then(data => {
         const reviews = [...this.state.reviews];
-        const index = reviews.findIndex(body => body.id === review.id);
+        const index = reviews.findIndex(review => review.body === review.id);
         reviews[index] = data;
         this.setState({reviews})
-      });
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error)
+      })
   }
 
   render() {
@@ -87,11 +90,11 @@ class GameReviews extends React.Component {
       <Button className="collection-button" variant="primary" onClick={this.handleShow}>
         See Reviews
       </Button>
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal className="modal-container" show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closebutton>
           <Modal.Title className="review-title">Reviews</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modal-body">
           <ul>
             <p>{reviews}</p>
           </ul>

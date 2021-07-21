@@ -13,8 +13,8 @@ class ReviewDetails extends React.Component {
       rating: this.props.review.rating,
     }
 
-    this.handleInput = this.handleInput.bind(this)
-    this.saveReview = this.saveReview.bind(this)
+    this.handleInput = this.handleInput.bind(this);
+    this.saveReview = this.saveReview.bind(this);
 
   }
 
@@ -24,7 +24,9 @@ class ReviewDetails extends React.Component {
 
   saveReview() {
     const review = this.props.review;
+    review.title = this.state.title;
     review.body = this.state.body;
+    review.rating = this.state.rating;
     this.props.editReview(review);
     this.setState({isEditing: false});
   }
@@ -45,8 +47,15 @@ class ReviewDetails extends React.Component {
             ? <textarea cols="30" row="10" name="body" value={this.state.body} onChange={this.handleInput} />
             : <p>{review.body}</p>
           }
+          <br/>
           {this.state.isEditing
-            ?<input type="text" autoComplete="off" placeholder="Rating 1-5" name="rating" value={this.state.rating} onChange={this.handleInput}/>
+            ?<select name="rating" value={this.state.rating} onChange={this.handleInput}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
             :<h4>My Rating: {review.rating}</h4>
           }
           {this.state.isEditing

@@ -2,9 +2,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import {withRouter, Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
-import FriendList from './FriendList';
 import ProfileSearch from './ProfileSearch'
-import Reviews from './Reviews'
 
 
 class Profile extends React.Component {
