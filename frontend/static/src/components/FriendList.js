@@ -11,7 +11,6 @@ class FriendList extends React.Component {
       avatar: null,
       preview: '',
     }
-    // this.addFriend = this.addFriend.bind(this)
   }
 
   componentDidMount() {
@@ -27,24 +26,6 @@ class FriendList extends React.Component {
       })
   }
 
-  // addFriend(friendId) {
-  //   const friends = [...this.state.friends, friendId];
-  //   const options = {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'X-CSRFToken': Cookies.get('csrftoken')
-  //     },
-  //     body: JSON.stringify({friends}),
-  //   }
-  //
-  //   fetch(`/api/v1/users/profiles/user/`, options)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       this.setState(data);
-  //       console.log(data);
-  //     })
-  // // }
 
   render() {
     const friends = this.state.friends.map(friend => (

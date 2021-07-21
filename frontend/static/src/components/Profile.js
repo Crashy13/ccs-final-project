@@ -114,7 +114,8 @@ class Profile extends React.Component {
   render() {
     const friends = this.state.friends.map(friend => (
       <li key={friend.id}>
-        <Link to={`/friends/${friend.user}/collection`}>{friend.display_name}</Link>
+        <img className="friend-list-avatar" src={friend.avatar} alt=""/>
+        <Link className="friend-list-link" to={`/friends/${friend.user}/collection`}>{friend.display_name}</Link>
       </li>
     ))
     return(

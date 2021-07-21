@@ -274,7 +274,12 @@ input:disabled {
 .friend-list-avatar {
   width: 20%;
   height: 20%;
-  border-radius: 50%;
+  border-radius: 20%;
+  margin: 1%;
+}
+
+.friend-list-link {
+  color: white;
 }
 
 .profile-image-container {

@@ -64,4 +64,4 @@ class FriendGameListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         id = self.kwargs['pk']
-        return Game.objects.filter(owner=id)
+        return Game.objects.filter(owner=id).filter(is_owned=True)
