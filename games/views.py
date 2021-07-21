@@ -37,7 +37,7 @@ class GameListAPIView(generics.ListCreateAPIView):
             return Game.objects.filter(is_owned=True).filter(owner=user).order_by('-play_status')
         elif is_owned is not None and is_owned == 'false':
             return Game.objects.filter(is_owned=False).filter(owner=user).order_by('name')
-        # return queryset
+        return queryset
 
 
 
@@ -63,6 +63,5 @@ class FriendGameListAPIView(generics.ListAPIView):
     serializer_class = GameSerializer
 
     def get_queryset(self):
-        is_owned = self.request.query_params.get('is_owned')
-        owner = self.request.query_params.get('owner')
-        return Game.objects.filter(owner__username=owner).filter(is_owned=True)
+        id = self.kwargs['pk']
+        return Game.objects.filter(owner=id)

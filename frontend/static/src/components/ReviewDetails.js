@@ -35,12 +35,12 @@ class ReviewDetails extends React.Component {
       <>
       <div>
         <li>
-          <h2>{review.game}</h2>
-          <Moment format="MM/DD/YYYY hh:mm">{review.created_at}</Moment>
           {this.state.isEditing
             ?<input type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput}/>
             :<h3>{review.title}</h3>
           }
+          <Moment format="MM/DD/YYYY hh:mm">{review.created_at}</Moment>
+          <p>By: {review.author}</p>
           {this.state.isEditing
             ? <textarea cols="30" row="10" name="body" value={this.state.body} onChange={this.handleInput} />
             : <p>{review.body}</p>

@@ -1,5 +1,7 @@
 import React from 'react';
 import {Button, Modal} from 'react-bootstrap';
+import Cookies from 'js-cookie';
+import ReviewDetails from './ReviewDetails';
 
 class GameReviews extends React.Component {
   constructor(props) {
@@ -8,10 +10,13 @@ class GameReviews extends React.Component {
       ...this.props.game,
       reviews: [],
       show: false,
+      isEditing: false,
     }
 
   this.handleShow = this.handleShow.bind(this);
   this.handleClose = this.handleClose.bind(this);
+  this.deleteReview = this.deleteReview.bind(this);
+  this.editReview = this.editReview.bind(this);
 
 }
 
@@ -37,14 +42,45 @@ class GameReviews extends React.Component {
       })
   }
 
+  deleteReview(id) {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+    }
+    fetch(`/api/v1/reviews/${id}`, options)
+      .then(response => {
+        const reviews = [...this.state.reviews];
+        const index = reviews.findIndex(review => review.id === id);
+        reviews.splice(index, 1);
+        this.setState({reviews})
+      })
+  }
+
+  editReview(review) {
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(review)
+    }
+    fetch(`/api/v1/reviews/${review.id}`, options)
+      .then(response => response.json())
+      .then(data => {
+        const reviews = [...this.state.reviews];
+        const index = reviews.findIndex(body => body.id === review.id);
+        reviews[index] = data;
+        this.setState({reviews})
+      });
+  }
+
   render() {
     const reviews = this.state.reviews.map(review => (
-      <li key={review.id}>
-        <h3>{review.title}</h3>
-        <p>By: {review.author}</p>
-        <p>{review.body}</p>
-        <p>Rating: {review.rating}</p>
-      </li>
+      <ReviewDetails key={review.id} review={review} deleteReview={this.deleteReview} editReview={this.editReview} />
     ))
     return(
       <>

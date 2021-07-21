@@ -24,10 +24,16 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class FriendSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
+class FollowerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ['avatar', 'display_name', 'user']
+        fields = ('friends',)
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -38,3 +44,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ['id', 'user', 'avatar', 'display_name', 'friends', 'reviews']
+
+    # def update(self, instance, validated_data):
+    #     import pdb; pdb.set_trace()
+    #     user = validated_data.get('user')
+
+        # user.profile.friends targets the many to many relationship we're trying to add to

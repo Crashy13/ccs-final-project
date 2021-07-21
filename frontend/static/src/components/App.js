@@ -104,6 +104,9 @@ async handleLogout() {
                   <Route exact path="/login">
                     <Login handleNavigation={this.handleNavigation} handleLogin={this.handleLogin}/>
                   </Route>
+                  <PrivateRoute path='/friends/:friendId/collection'>
+                    <FriendProfile />
+                  </PrivateRoute>
                   <PrivateRoute path="/userhomepage">
                     <UserHomepage/>
                   </PrivateRoute>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import FriendList from './FriendList';
 import ProfileSearch from './ProfileSearch'
@@ -90,8 +90,10 @@ class Profile extends React.Component {
     alert('Profile saved!', response);
   }
 
-  addFriend(friendId) {
-    const friends = [...this.state.friends, friendId];
+  addFriend(friend) {
+    const friends = [...this.state.friends].map(friend => friend.id);
+    friends.push(friend);
+
     const options = {
       method: 'PATCH',
       headers: {
@@ -101,7 +103,7 @@ class Profile extends React.Component {
       body: JSON.stringify({friends}),
     }
 
-    fetch(`/api/v1/users/profiles/user/`, options)
+    fetch(`/api/v1/users/profiles/add_follower/`, options)
       .then(response => response.json())
       .then(data => {
         this.setState(data);
@@ -112,7 +114,7 @@ class Profile extends React.Component {
   render() {
     const friends = this.state.friends.map(friend => (
       <li key={friend.id}>
-        <p>{friend.display_name}</p>
+        <Link to={`/friends/${friend.user}/collection`}>{friend.display_name}</Link>
       </li>
     ))
     return(
@@ -121,9 +123,7 @@ class Profile extends React.Component {
         <div className="friends-list">
           <ProfileSearch addFriend={this.addFriend}/>
             <h3>Friends</h3>
-            <ul>
-              <p>{friends}</p>
-            </ul>
+            <ul>{friends}</ul>
         </div>
         <div className="profile-details">
           <form>

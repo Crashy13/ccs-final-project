@@ -1,5 +1,6 @@
 import React from 'react';
 import CollectionDetails from './CollectionDetails'
+import {withRouter} from 'react-router-dom';
 
 class FriendProfile extends React.Component {
   constructor(props) {
@@ -10,7 +11,10 @@ class FriendProfile extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/games/owners/?owner=admin`)
+
+    const friendId = this.props.match.params.friendId;
+
+    fetch(`/api/v1/games/owner/${friendId}/`)
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');
@@ -41,4 +45,4 @@ class FriendProfile extends React.Component {
   }
 }
 
-export default FriendProfile
+export default withRouter(FriendProfile)

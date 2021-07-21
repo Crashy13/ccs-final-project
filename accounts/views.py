@@ -1,7 +1,7 @@
 from rest_framework import generics;
 from reviews.models import Review;
 from .models import Profile;
-from .serializers import ProfileSerializer, ReviewSerializer;
+from .serializers import ProfileSerializer, ReviewSerializer, FollowerSerializer;
 from django.shortcuts import render, get_object_or_404;
 from .permissions import IsAuthOrReadOnly;
 
@@ -28,9 +28,9 @@ class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     def get_object(self):
         return get_object_or_404(Profile, user=self.request.user)
 
-    def perform_update(self, serializer):
+    # def perform_update(self, serializer):
         # import pdb; pdb.set_trace()
-        serializer.save(user=self.request.user)
+        # serializer.save(user=self.request.user)
 
 class ReviewListAPIView(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
@@ -51,12 +51,15 @@ class ReviewDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 class ProfileAddFollowerAPIView(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
+    serializer_class = FollowerSerializer
+
+    def get_object(self):
+        return get_object_or_404(Profile, user=self.request.user)
 
 
 
-    def perform_update(self, serializer):
-        import pdb; pdb.set_trace()
-        # once you have the profile
-        # add the self.request.user to the profile.friends relationship
-        serializer.save()
+    # def perform_update(self, serializer):
+    #     import pdb; pdb.set_trace()
+    #     # once you have the profile
+    #     # add the self.request.user to the profile.friends relationship
+    #     serializer.save()
