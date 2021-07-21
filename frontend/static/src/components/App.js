@@ -64,7 +64,7 @@ async handleLogin(user) {
     body: JSON.stringify(user),
   };
 
-  const handleError = (err) => console.warn(err);
+  const handleError = (err) => console.warn('error:'+JSON.stringify(err));
   const response = await fetch('/rest-auth/login/', options).catch(handleError);
 
   if(response.ok) {

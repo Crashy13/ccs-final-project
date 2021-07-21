@@ -12,8 +12,8 @@ class ReviewListAPIView(generics.ListCreateAPIView):
         serializer.save(author=self.request.user)
 
     def get_queryset(self):
-        user = self.request.user
-        return Review.objects.filter(author=user)
+        author = self.request.username
+        return Review.objects.filter(author=author)
 
 class ReviewDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()

@@ -24,7 +24,7 @@ class WishlistDetails extends React.Component {
         <br/>
         <Button className="collection-button" type="button" onClick={() => this.props.updateOwned(game.id)}>Add to Collection</Button>
         <Button className="collection-button" type="button" onClick={() => this.props.removeGame(game.id)}>Remove</Button>
-        <GameReviews />
+        <GameReviews game={game} />
         </section>
       </li>
       </>

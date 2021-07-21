@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import Cookies from 'js-cookie';
+import {Modal, Button} from 'react-bootstrap';
+import GameReviews from './GameReviews'
 
 const GameResults = (props) => {
   const [show, setShow] = useState(true);
@@ -39,10 +41,11 @@ const GameResults = (props) => {
             <li key={game.id}>
               <h3>{game.name}</h3>
               <img src={game.background_image} alt="game"/>
+              <GameReviews game={game}/>
               <h3>Released:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
               <br/>
-              <button type="button" onClick={() => addGame(game, true)}>Add to Your Collection</button>
-              <button type="button" onClick={() => addGame(game, false)}>Add to Wishlist</button>
+              <Button className="collection-button" type="button" onClick={() => addGame(game, true)}>Add to Your Collection</Button>
+              <Button className="collection-button" type="button" onClick={() => addGame(game, false)}>Add to Wishlist</Button>
             </li>
           ))
         }

@@ -4,11 +4,11 @@ from .models import Review
 
 class ReviewSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField('get_owner_status')
+    author = serializers.CharField(required=False)
 
 
     def get_owner_status(self, obj):
         return obj.author == self.context['request'].user
-
 
 
     class Meta:

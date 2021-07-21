@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import FriendList from './FriendList';
 import ProfileSearch from './ProfileSearch'
+import Reviews from './Reviews'
 
 
 class Profile extends React.Component {
