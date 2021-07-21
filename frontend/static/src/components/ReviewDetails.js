@@ -36,7 +36,7 @@ class ReviewDetails extends React.Component {
     return(
       <>
       <div>
-        <li>
+        <li className="review-container">
           {this.state.isEditing
             ?<input type="text" autoComplete="off" name="title" value={this.state.title} onChange={this.handleInput}/>
             :<h3>{review.title}</h3>
@@ -64,6 +64,7 @@ class ReviewDetails extends React.Component {
           }
 
           {review.is_owner && <Button className="collection-button" type="button" onClick={() => this.props.deleteReview(review.id)}>Delete</Button>}
+          <div id="pacman"></div>
         </li>
 
       </div>

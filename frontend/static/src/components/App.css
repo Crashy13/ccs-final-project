@@ -135,6 +135,11 @@ nav {
   color: pink;
 }
 
+.review-container {
+  border-bottom: 2px dotted white;
+  margin: 5% 0;
+}
+
 .modal-content {
   background: grey;
   line-height: 1;
@@ -166,6 +171,21 @@ nav {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
+#pacman {
+      width: 0px;
+      height: 0px;
+      border-right: 10px solid transparent;
+      border-top: 10px solid yellow;
+      border-left: 10px solid yellow;
+      border-bottom: 10px solid yellow;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      margin-top: 5%;
+      transform: translateY(50%)
+    }
 
 .frontpage-item {
   background: #676767;

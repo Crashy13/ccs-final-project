@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
 import Cookies from 'js-cookie';
@@ -6,7 +6,6 @@ import {Button} from 'react-bootstrap';
 import GameReviews from './GameReviews'
 
 const GameResults = (props) => {
-
 
   const addGame = (game, is_owned) => {
     const options = {

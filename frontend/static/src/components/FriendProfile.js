@@ -53,6 +53,7 @@ class FriendProfile extends React.Component {
       }
       return response.json();
     })
+      this.setState(game)
       alert('Game added to your list!')
 }
 
