@@ -119,8 +119,10 @@ class UserHomepage extends React.Component {
     <>
       <div className="main-container">
         <div className="collection-main-container">
-          <h1>MY COLLECTION</h1>
-          <GameSearch />
+          <div className="collection-topbar">
+          <GameSearch className="collection-topbar-button" />
+          <h1 className="collection-topbar-title">MY COLLECTION</h1>
+          </div>
           <br/>
           <Button className="filter-button" type="button" onClick={this.componentDidMount}>All</Button>
           <Button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</Button>

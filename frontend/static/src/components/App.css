@@ -71,7 +71,7 @@ nav {
  }
 
  .navbar-links {
-   margin: 2% 0;
+   margin: auto;
    flex: 1;
  }
 
@@ -157,19 +157,32 @@ nav {
   padding: 1rem;
 }
 
+.frontpage-main-title-container {
+  background-image: url('../images/Sephiroth-Mario.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .frontpage-main-title {
   font-size: 4.875rem;
   text-transform: capitalize;
   color: white;
   text-align: center;
   padding-top: 5rem;
-  padding-bottom: 5rem;
   font-weight: 700;
   margin: 0;
-  margin-top: 4rem;
-  background-image: url('../images/Sephiroth-Mario.jpeg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  margin-top: 3.5rem;
+}
+
+.frontpage-main-tag {
+  font-size: 1.875rem;
+  text-transform: capitalize;
+  color: white;
+  text-align: center;
+  padding-bottom: 5rem;
+  font-weight: 400;
+  margin: 0;
+  font-style: italic;
 }
 
 #pacman {
@@ -191,6 +204,7 @@ nav {
   background: #676767;
   margin: 1%;
   flex: 1;
+  padding-bottom: 2rem;
 }
 
 .frontpage-title {
@@ -216,6 +230,27 @@ nav {
   padding: 1%;
 }
 
+.collection-topbar {
+  display: flex;
+}
+
+.collection-topbar-title {
+  margin: 0 27%;
+}
+
+.add-game-button {
+  margin: 0 1% 1% 1%;
+  background: #62D3C7;
+  border: 1px solid #387E54;
+  color: black;
+}
+
+.add-game-button:hover {
+  background: #32707F;
+  border: 1px solid #32707F;
+  box-shadow: 0 0 5px 5px #62D3C7;
+}
+
 .collection-list {
   display: flex;
   width: 90%;
@@ -231,7 +266,14 @@ nav {
   flex: 0 0 30%;
   padding-bottom: 1rem;
   border-radius: 2%;
+  box-shadow: #387E54 0px 2px 4px 0px, #387E54 0px 2px 16px 0px;
 }
+
+/* #387E54 */
+
+/* .collection-item:hover {
+
+} */
 
 .collection-title {
   font-size: 1.875rem;
@@ -255,7 +297,7 @@ nav {
 .collection-button {
   margin: 0 1% 1% 1%;
   background: #32707F;
-  border: #387E54;
+  border: 1px solid #387E54;
 }
 
 .filter-button {
@@ -265,12 +307,15 @@ nav {
 }
 
 .filter-button:hover {
-  background: #387E54;
+  background: #676767;
   border: 1px solid #387E54;
+  box-shadow: 0 0 5px 5px #387E54;
 }
 
 .collection-button:hover {
-  background: #62D3C7;
+  background: #32707F;
+  border: 1px solid #32707F;
+  box-shadow: 0 0 5px 5px #62D3C7;
 }
 
 

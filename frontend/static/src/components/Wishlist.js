@@ -74,8 +74,10 @@ class Wishlist extends React.Component {
     <>
       <div className="main-container">
         <div className="collection-main-container">
-          <h1>MY WISHLIST</h1>
-          <GameSearch />
+          <div className="collection-topbar">
+          <GameSearch className="collection-topbar-button" />
+          <h1 className="collection-topbar-title">MY WISHLIST</h1>
+          </div>
           <br/>
           <div className="collection-container">
           <ul className="collection-list">{games}</ul>
