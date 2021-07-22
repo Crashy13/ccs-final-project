@@ -4,7 +4,7 @@ import {Modal, Button} from 'react-bootstrap';
 require('dotenv').config()
 
 
-const GameSearch = () => {
+const GameSearch = (props) => {
 
   const [searchTerm, setSearchTerm] = useState("")
   const [gameResults, setGameResults] = useState([])
@@ -31,7 +31,7 @@ const GameSearch = () => {
   }
   return(
     <div>
-      <Button className="add-game-button" variant="primary" onClick={handleShow}>
+      <Button className="add-game-button" variant="primary" size="lg" onClick={handleShow}>
         Add New Game
       </Button>
       <Modal show={show} onHide={handleClose}>
@@ -43,7 +43,7 @@ const GameSearch = () => {
             <input type="text" value={searchTerm} onChange={handleChange}/>
             <input type="submit"/>
           </form>
-          <GameResults gameResults={gameResults} />
+          <GameResults gameResults={gameResults} addGame={props.addGame}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

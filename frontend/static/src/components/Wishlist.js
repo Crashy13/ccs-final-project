@@ -1,8 +1,8 @@
-import React from 'react'
-import {withRouter} from 'react-router-dom'
-import Cookies from 'js-cookie'
-import CollectionDetails from './WishlistDetails'
-import GameSearch from './GameSearch'
+import React from 'react';
+import {withRouter} from 'react-router-dom';
+import Cookies from 'js-cookie';
+import CollectionDetails from './WishlistDetails';
+import GameSearch from './GameSearch';
 
 class Wishlist extends React.Component {
   constructor(props) {
@@ -10,9 +10,40 @@ class Wishlist extends React.Component {
     this.state = {
       games: [],
     }
-    this.removeGame = this.removeGame.bind(this)
-    this.updateOwned = this.updateOwned.bind(this)
+    this.removeGame = this.removeGame.bind(this);
+    this.updateOwned = this.updateOwned.bind(this);
+    this.addGame = this.addGame.bind(this);
   }
+
+  addGame(game, is_owned) {
+
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify({
+        name: game.name,
+        released: game.released,
+        background_image: game.background_image,
+        is_owned,
+      })
+    }
+  fetch('/api/v1/games/', options)
+    .then(response => {
+      if(!response.ok) {
+        throw new Error('Network response not ok');
+      }
+      alert('Game added to your list!')
+      return response.json();
+    }).then(data => {
+      const games = [...this.state.games, data];
+      this.setState({games})
+    })
+
+}
 
   componentDidMount() {
     fetch(`/api/v1/games/?is_owned=false`)
@@ -74,10 +105,8 @@ class Wishlist extends React.Component {
     <>
       <div className="main-container">
         <div className="collection-main-container">
-          <div className="collection-topbar">
-          <GameSearch className="collection-topbar-button" />
-          <h1 className="collection-topbar-title">MY WISHLIST</h1>
-          </div>
+          <h1 className="collection-topbar-wishlist">MY WISHLIST</h1>
+          <GameSearch addGame={this.addGame}/>
           <br/>
           <div className="collection-container">
           <ul className="collection-list">{games}</ul>

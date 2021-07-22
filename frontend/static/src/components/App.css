@@ -55,36 +55,40 @@ label {
 }
 
 nav {
-  display: flex;
-  align-items: center;
   min-height: 10vh;
-  width: 100%;
-  background: #387E54;
+  background: #32707F;
   color: white;
   text-transform: uppercase;
 }
 
-.nav-links {
-   display: flex;
-   width: 100%;
-   margin: 0;
- }
+.nav-link {
+  color: white !important;
+  font-size: 150%;
+  font-weight: 500;
+}
 
- .navbar-links {
-   margin: auto;
-   flex: 1;
- }
+.nav-link:hover {
+  color: #62D3C7 !important;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: 700;
+  font-size: 150%;
+}
+
+.navbar-brand:hover {
+  color: #62D3C7 !important;
+}
+
+.logout-link {
+  margin-left: 70%;
+}
 
  .user-links {
    margin: 2% 0;
    flex: 1;
  }
-
-.nav-link {
-  color: white;
-  width: 100%;
-  padding: 0;
-}
 
  .login-page-container {
    display: flex;
@@ -94,7 +98,7 @@ nav {
  .login-container {
    display: flex;
    background: #676767;
-   border: 10px solid #387E54;
+   border: 10px solid #32707F;
    border-radius: 3%;
    width: 33%;
    flex: 1;
@@ -110,7 +114,7 @@ nav {
  .registration-container {
    display: flex;
    background: #676767;
-   border: 10px solid #387E54;
+   border: 10px solid #32707F;
    border-radius: 3%;
    width: 33%;
    flex: 1;
@@ -152,15 +156,15 @@ nav {
 
 .frontpage-container {
   display: flex;
-  width: 75%;
+  width: 100%;
   margin: 5% auto;
-  padding: 1rem;
 }
 
 .frontpage-main-title-container {
-  background-image: url('../images/Sephiroth-Mario.jpeg');
+  background-image: url('../images/Village.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  border-radius: 3px;
 }
 
 .frontpage-main-title {
@@ -205,6 +209,14 @@ nav {
   margin: 1%;
   flex: 1;
   padding-bottom: 2rem;
+  border-radius: 3%;
+  box-shadow: grey 0px 2px 4px 0px, grey 0px 2px 16px 0px;
+}
+
+.frontpage-icon {
+  color: white;
+  padding: 5% 50%;
+  transform: translateX(-5%);
 }
 
 .frontpage-title {
@@ -231,24 +243,67 @@ nav {
 }
 
 .collection-topbar {
-  display: flex;
+  text-align: center;
 }
 
 .collection-topbar-title {
-  margin: 0 27%;
+  font-family: sans-serif;
+  margin: auto;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  max-width: 600px;
+  position: relative;
+}
+
+.collection-topbar-title:before {
+  content: " ";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: white;
+  left: 0;
+  top: 50%;
+  position: absolute;
+}
+
+.collection-topbar-title:after {
+  content: " ";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: white;
+  right: 0;
+  top: 50%;
+  position: absolute;
 }
 
 .add-game-button {
-  margin: 0 1% 1% 1%;
+  margin-right: 5%;
   background: #62D3C7;
   border: 1px solid #387E54;
   color: black;
+  justify-content: flex-end;
 }
 
 .add-game-button:hover {
   background: #32707F;
   border: 1px solid #32707F;
   box-shadow: 0 0 5px 5px #62D3C7;
+}
+
+.add-game-button:active {
+  background: #62D3C7;
+  border: 1px solid #387E54;
+  color: black;
+}
+
+.add-game-button:focus {
+  box-shadow: none;
+}
+
+.filter-header {
+  margin-left: 15%;
 }
 
 .collection-list {
@@ -266,7 +321,7 @@ nav {
   flex: 0 0 30%;
   padding-bottom: 1rem;
   border-radius: 2%;
-  box-shadow: #387E54 0px 2px 4px 0px, #387E54 0px 2px 16px 0px;
+  box-shadow: #62D3C7 0px 2px 4px 0px, #62D3C7 0px 2px 16px 0px;
 }
 
 /* #387E54 */
@@ -284,6 +339,7 @@ nav {
   padding-bottom: .5rem;
   font-weight: 700;
   margin: 0;
+  text-shadow: 2px 2px #32707F;
 }
 
 .collection-body {
@@ -300,22 +356,78 @@ nav {
   border: 1px solid #387E54;
 }
 
+.collection-button:hover {
+  background: #32707F;
+  border: 1px solid #32707F;
+  box-shadow: 0 0 5px 5px #62D3C7;
+}
+
+.filter-buttons {
+  display: flex;
+}
+
 .filter-button {
   margin: 0 1%;
   background: #676767;
   border: 1px solid #676767;
 }
 
+.fb-all {
+  padding: 0 3%;
+}
+
+.fb-playing {
+  padding: 0 2%;
+}
+
+.collection-topbar-button {
+  flex: 1;
+}
+
 .filter-button:hover {
   background: #676767;
   border: 1px solid #387E54;
-  box-shadow: 0 0 5px 5px #387E54;
+  box-shadow: 0 0 5px 5px #62D3C7;
 }
 
-.collection-button:hover {
-  background: #32707F;
-  border: 1px solid #32707F;
+.filter-button:focus {
   box-shadow: 0 0 5px 5px #62D3C7;
+}
+
+.filter-button:hover:active {
+  box-shadow: none;
+}
+
+.collection-topbar-wishlist {
+  font-family: sans-serif;
+  margin: auto;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  max-width: 600px;
+  position: relative;
+}
+
+.collection-topbar-wishlist:before {
+  content: " ";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: white;
+  left: 0;
+  top: 50%;
+  position: absolute;
+}
+
+.collection-topbar-wishlist:after {
+  content: " ";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: white;
+  right: 0;
+  top: 50%;
+  position: absolute;
 }
 
 
@@ -331,10 +443,10 @@ input:disabled {
 
 .profile-details {
   background: #676767;
-  border: 10px solid #387E54;
+  border: 5px solid #32707F;
   border-radius: 5%;
   width: 25%;
-  margin: 1% auto;
+  margin: 3% auto;
   padding: 5%
 }
 
@@ -345,10 +457,10 @@ input:disabled {
 
 .friends-list {
   background: #676767;
-  border: 10px solid #387E54;
+  border: 5px solid #32707F;
   border-radius: 5%;
   width: 33%;
-  margin: 1% auto;
+  margin: 3% auto;
   padding: 1%
 }
 
@@ -374,7 +486,7 @@ input:disabled {
   margin-top: 15%
 }
 
-.profile-image-container>input{
+.profile-image-container>input.overlay{
   position: absolute;
   top: 0;
   right: 0;

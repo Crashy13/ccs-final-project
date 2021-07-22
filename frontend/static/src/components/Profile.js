@@ -89,8 +89,11 @@ class Profile extends React.Component {
   }
 
   addFriend(friend) {
-    const friends = [...this.state.friends].map(friend => friend.id);
-    friends.push(friend);
+
+    let friends = [...this.state.friends, friend];
+    this.setState({friends});
+
+    friends = [...this.state.friends].map(friend => friend.id);
 
     const options = {
       method: 'PATCH',
@@ -104,7 +107,10 @@ class Profile extends React.Component {
     fetch(`/api/v1/users/profiles/add_follower/`, options)
       .then(response => response.json())
       .then(data => {
-        this.setState({friends});
+        console.log('data', data);
+        // const friends = [...this.state.friends, data];
+        // th
+        // this.setState({friends});
       })
   }
 
@@ -129,7 +135,7 @@ class Profile extends React.Component {
             <input id="display-name" type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
 
             <div className="profile-image-container">
-              <input type="file" name="avatar" onChange={this.handleImage} />
+              <input type="file" name="avatar" onChange={this.handleImage} className={(this.state.avatar || this.state.preview) && 'overlay'}/>
               { this.state.avatar && !this.state.preview && <img className="profile-image" src={this.state.avatar} alt=""/> }
               { this.state.preview && <img className="profile-image" src={this.state.preview} alt=""/> }
             </div>

@@ -44,7 +44,7 @@ class ProfileSearch extends React.Component {
           <Card.Img variant="top" src={result.avatar} />
           <Card.Body>
             <Card.Title>{result.display_name}</Card.Title>
-            <Button variant="primary" onClick={() => this.props.addFriend(result.id)}>Add friend</Button>
+            <Button variant="primary" onClick={() => this.props.addFriend(result)}>Add friend</Button>
           </Card.Body>
         </Card>
       </li>

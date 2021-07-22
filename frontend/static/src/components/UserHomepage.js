@@ -15,7 +15,8 @@ class UserHomepage extends React.Component {
     this.filterPlaying = this.filterPlaying.bind(this)
     this.filterUnstarted = this.filterUnstarted.bind(this)
     this.removeGame = this.removeGame.bind(this)
-    this.updateStatus = this.updateStatus.bind(this)
+    this.updateStatus = this.updateStatus.bind(this);
+    this.addGame = this.addGame.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,36 @@ class UserHomepage extends React.Component {
         console.error('There has been a problem with your fetch request:', error)
       })
   }
+
+  addGame(game, is_owned) {
+
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify({
+        name: game.name,
+        released: game.released,
+        background_image: game.background_image,
+        is_owned,
+      })
+    }
+  fetch('/api/v1/games/', options)
+    .then(response => {
+      if(!response.ok) {
+        throw new Error('Network response not ok');
+      }
+      alert('Game added to your list!')
+      return response.json();
+    }).then(data => {
+      const games = [...this.state.games, data];
+      this.setState({games})
+    })
+
+}
 
   filterCompleted() {
     fetch(`api/v1/games/?play_status=COMPLETED`)
@@ -92,6 +123,7 @@ class UserHomepage extends React.Component {
   }
 
   updateStatus(game) {
+    const id = game.id;
     const options = {
       method: 'PATCH',
       headers: {
@@ -103,11 +135,14 @@ class UserHomepage extends React.Component {
     fetch(`/api/v1/games/${game.id}/?is_owned=true`, options)
       .then(response => response.json())
       .then(data => {
-        const games = [...this.state.games]
-        const index = games.findIndex(game => game.id)
+        const games = [...this.state.games];
+        console.log('games', games)
+        console.log('game', game)
+        const index = games.findIndex(game => game.id === id);
+        // console.log('index', index);
         games[index] = data;
-        this.setState({games})
-      })
+        this.setState({games});
+      });
   }
 
 
@@ -120,14 +155,17 @@ class UserHomepage extends React.Component {
       <div className="main-container">
         <div className="collection-main-container">
           <div className="collection-topbar">
-          <GameSearch className="collection-topbar-button" />
-          <h1 className="collection-topbar-title">MY COLLECTION</h1>
+            <h1 className="collection-topbar-title">MY COLLECTION</h1>
           </div>
           <br/>
-          <Button className="filter-button" type="button" onClick={this.componentDidMount}>All</Button>
-          <Button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</Button>
-          <Button className="filter-button" type="button" onClick={this.filterPlaying}>Playing</Button>
-          <Button className="filter-button" type="button" onClick={this.filterUnstarted}>Unstarted</Button>
+          <div className="filter-buttons">
+            <GameSearch addGame={this.addGame}/>
+            <h2 className="filter-header">Filter By:</h2>
+            <Button className="filter-button fb-all" type="button" onClick={this.componentDidMount}>All</Button>
+            <Button className="filter-button" type="button" onClick={this.filterCompleted}>Completed</Button>
+            <Button className="filter-button fb-playing" type="button" onClick={this.filterPlaying}>Playing</Button>
+            <Button className="filter-button" type="button" onClick={this.filterUnstarted}>Unstarted</Button>
+          </div>
           <div className="collection-container">
               <ul className="collection-list">{games}</ul>
           </div>

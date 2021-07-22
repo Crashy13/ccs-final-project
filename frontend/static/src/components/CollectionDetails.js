@@ -31,7 +31,7 @@ class CollectionDetails extends React.Component {
   }
 
   saveStatus() {
-    const game = this.props.game;
+    const game = { ...this.props.game };
     game.play_status = this.state.play_status;
     this.props.updateStatus(game);
     this.setState({isEditing: false})

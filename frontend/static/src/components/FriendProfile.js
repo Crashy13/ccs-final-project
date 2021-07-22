@@ -75,7 +75,7 @@ class FriendProfile extends React.Component {
     return(
       <div className="main-container">
         <div className="collection-main-container">
-          <h1>THEIR COLLECTION</h1>
+          <h1 className="collection-topbar-wishlist">THEIR COLLECTION</h1>
           <br/>
           <div className="collection-container">
               <ul className="collection-list">{games}</ul>

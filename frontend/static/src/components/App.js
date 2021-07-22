@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import Login from './Login';
 // import Registration from './Registration';
 import UserHomepage from './UserHomepage';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 import './App.css';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import PrivateRoute from './PrivateRouter';
@@ -15,6 +15,7 @@ import ReviewSubmit from './ReviewSubmit'
 import LandingPage from './LandingPage'
 import ProfileSearch from './ProfileSearch'
 import FriendProfile from './FriendProfile'
+import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -97,7 +98,21 @@ async handleLogout() {
     return (
         <div className="main-container">
           <>
-            <Navbar handleNavigation={this.handleNavigation} handleLogout={this.handleLogout} />
+          <Navbar expand="lg" handleNavigation={this.handleNavigation} handleLogout={this.handleLogout}>
+            <Container>
+              <Navbar.Brand href="/">Home</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  {!!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/userhomepage">Collection</Nav.Link>}
+                  {!!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/wishlist">Wishlist</Nav.Link>}
+                  {!!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/profile">Profile</Nav.Link>}
+                  {!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/login" className="nav-link">Login / Register</Nav.Link>}
+                  {!!Cookies.get('Authorization') && <Nav.Link className="nav-link logout-link" href="/" onClick={() => this.handleLogout('login')}>Logout</Nav.Link>}
+                </Nav>
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
               <div>
                 <Switch>
                   <Route exact path="/" component={LandingPage} />
