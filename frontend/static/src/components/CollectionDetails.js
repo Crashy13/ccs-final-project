@@ -1,9 +1,9 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import Moment from 'react-moment';
-import ReviewSubmit from './ReviewSubmit'
-import GameReviews from './GameReviews'
-import {Button} from 'react-bootstrap/'
+import ReviewSubmit from './ReviewSubmit';
+import GameReviews from './GameReviews';
+import {Button} from 'react-bootstrap';
 
 
 class CollectionDetails extends React.Component {
@@ -45,7 +45,7 @@ class CollectionDetails extends React.Component {
         <h2 className="collection-title">{game.name}</h2>
         <section className="collection-body">
         <ReviewSubmit game={game}/>
-        <img src={game.background_image} alt="game screenshot"/>
+        <img className="game-screenshot" src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Collection:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
         <br/>
         <br/>

@@ -123,29 +123,36 @@ class Profile extends React.Component {
     ))
     return(
       <>
-      <div className="profile-main-container">
-        <div className="friends-list">
-          <ProfileSearch addFriend={this.addFriend}/>
-            <h3>Friends</h3>
-            <ul>{friends}</ul>
+      <div className="main-container">
+        <div className="collection-main-container">
+          <div className="collection-topbar">
+            <h1 className="collection-topbar-title">MY PROFILE</h1>
+          </div>
+        <div className="profile-main-container">
+          <div className="friends-list">
+            <ProfileSearch addFriend={this.addFriend}/>
+              <h3>Friends</h3>
+              <ul>{friends}</ul>
+          </div>
+          <div className="profile-details">
+            <form>
+              <label htmlFor="display-name">Display name: </label>
+              <input id="display-name" type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+
+              <div className="profile-image-container">
+                <input type="file" name="avatar" onChange={this.handleImage} className={(this.state.avatar || this.state.preview) && 'overlay'}/>
+                { this.state.avatar && !this.state.preview && <img className="profile-image" src={this.state.avatar} alt=""/> }
+                { this.state.preview && <img className="profile-image" src={this.state.preview} alt=""/> }
+              </div>
+
+              {
+                !this.state.isEditing
+                ? <Button className="collection-button" type='button' onClick={() => this.setState({isEditing: true})}>Edit</Button>
+                : <Button className="collection-button" type='button' onClick={this.handleSubmit}>Save</Button>
+              }
+            </form>
+          </div>
         </div>
-        <div className="profile-details">
-          <form>
-            <label htmlFor="display-name">Display name: </label>
-            <input id="display-name" type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
-
-            <div className="profile-image-container">
-              <input type="file" name="avatar" onChange={this.handleImage} className={(this.state.avatar || this.state.preview) && 'overlay'}/>
-              { this.state.avatar && !this.state.preview && <img className="profile-image" src={this.state.avatar} alt=""/> }
-              { this.state.preview && <img className="profile-image" src={this.state.preview} alt=""/> }
-            </div>
-
-            {
-              !this.state.isEditing
-              ? <Button className="collection-button" type='button' onClick={() => this.setState({isEditing: true})}>Edit</Button>
-              : <Button className="collection-button" type='button' onClick={this.handleSubmit}>Save</Button>
-            }
-          </form>
         </div>
       </div>
       </>
