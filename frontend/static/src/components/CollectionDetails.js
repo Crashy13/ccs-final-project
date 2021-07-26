@@ -46,7 +46,8 @@ class CollectionDetails extends React.Component {
         <section className="collection-body">
         <ReviewSubmit game={game}/>
         <img className="game-screenshot" src={game.background_image} alt="game screenshot"/>
-        <p>Date Added To Collection:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
+        <h3>Date Added To Collection:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
+        <h3>Date Game Released:</h3><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
         <br/>
         <br/>
         {this.state.isEditing

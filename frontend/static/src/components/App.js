@@ -15,7 +15,7 @@ import ReviewSubmit from './ReviewSubmit'
 import LandingPage from './LandingPage'
 import ProfileSearch from './ProfileSearch'
 import FriendProfile from './FriendProfile'
-import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import {Container, Nav, Navbar} from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {

@@ -21,6 +21,7 @@ class WishlistDetails extends React.Component {
         <section className="collection-body">
         <img src={game.background_image} alt="game screenshot"/>
         <p>Date Added To Wishlist:</p><Moment className="release-date" format="MM/DD/YYYY">{game.date_added}</Moment>
+        <p>Release Date:</p><Moment className="release-date" format="MM/DD/YYYY">{game.released}</Moment>
         <br/>
         <br/>
         <Button className="collection-button" type="button" onClick={() => this.props.updateOwned(game.id)}>Add to Collection</Button>

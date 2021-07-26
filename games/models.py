@@ -19,6 +19,7 @@ class Game(models.Model):
     is_owned = models.BooleanField(default=False, null=True, blank=True)
     play_status = models.CharField(max_length=15, choices=STATUS_CHOICES, default=UNSTARTED, null=True, blank=True)
     date_added = models.DateField(auto_now_add=True, null=True)
+    released = models.DateField(auto_now_add=False, null=True)
 
     # user_uploaded_image ImageField
     # api_image_url URLField

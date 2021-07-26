@@ -110,7 +110,7 @@ class Profile extends React.Component {
         console.log('data', data);
         // const friends = [...this.state.friends, data];
         // th
-        // this.setState({friends});
+        // this.setState({data});
       })
   }
 
