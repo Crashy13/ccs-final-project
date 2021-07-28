@@ -98,7 +98,7 @@ async handleLogout() {
     return (
         <div className="main-container">
           <>
-          <Navbar expand="lg" handleNavigation={this.handleNavigation} handleLogout={this.handleLogout}>
+          <Navbar expand="lg">
             <Container>
               <Navbar.Brand href="/">Home</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -107,7 +107,7 @@ async handleLogout() {
                   {!!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/userhomepage">Collection</Nav.Link>}
                   {!!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/wishlist">Wishlist</Nav.Link>}
                   {!!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/profile">Profile</Nav.Link>}
-                  {!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/login" className="nav-link">Login / Register</Nav.Link>}
+                  {!Cookies.get('Authorization') && <Nav.Link className="nav-link" href="/login">Login / Register</Nav.Link>}
                   {!!Cookies.get('Authorization') && <Nav.Link className="nav-link logout-link" href="/" onClick={() => this.handleLogout('login')}>Logout</Nav.Link>}
                 </Nav>
               </Navbar.Collapse>

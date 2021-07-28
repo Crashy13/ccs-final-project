@@ -107,7 +107,7 @@ class Profile extends React.Component {
     fetch(`/api/v1/users/profiles/add_follower/`, options)
       .then(response => response.json())
       .then(data => {
-        console.log('data', data);
+        console.log('data', data)
         // const friends = [...this.state.friends, data];
         // th
         // this.setState({data});
