@@ -10,11 +10,11 @@ class UserHomepage extends React.Component {
     this.state = {
       games: [],
     }
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.filterCompleted = this.filterCompleted.bind(this)
-    this.filterPlaying = this.filterPlaying.bind(this)
-    this.filterUnstarted = this.filterUnstarted.bind(this)
-    this.removeGame = this.removeGame.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.filterCompleted = this.filterCompleted.bind(this);
+    this.filterPlaying = this.filterPlaying.bind(this);
+    this.filterUnstarted = this.filterUnstarted.bind(this);
+    this.removeGame = this.removeGame.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
     this.addGame = this.addGame.bind(this);
   }
@@ -166,6 +166,13 @@ class UserHomepage extends React.Component {
             <Button className="filter-button fb-playing" type="button" onClick={this.filterPlaying}>Playing</Button>
             <Button className="filter-button" type="button" onClick={this.filterUnstarted}>Unstarted</Button>
           </div>
+          <form onSubmit={this.getResults}>
+            <label htmlFor="searchTerm">
+              <strong>Search Collection: </strong>
+              <input type="text" name="searchTerm" value={this.state.searchTerm} onChange={this.handleInput} autoComplete="off"/>
+              <input type="submit" value="submit"/>
+            </label>
+          </form>
           <div className="collection-container">
               <ul className="collection-list">{games}</ul>
           </div>
